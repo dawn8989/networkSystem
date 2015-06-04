@@ -1,0 +1,23 @@
+.tip-green {
+	z-index:1000;
+	text-align:left;
+	border:1px solid #bdde98;
+	padding:7px 10px;
+	width:200px;
+	height:500px;
+	color:#860404;
+	background-color:#dff6c6;
+	
+	font:bold 12px/14px arial,helvetica,sans-serif;
+	
+	/**
+	 * - If you set a background-image, border/padding/background-color will be ingnored.
+	 *   You can set any padding to .tip-inner instead if you need.
+	 * - If you want a tiled background-image and border/padding for the tip,
+	 *   set the background-image to .tip-inner instead.
+	 */
+}
+/* .tip-green .tip-inner {
+	font:bold 12px/14px arial,helvetica,sans-serif;
+} */
+

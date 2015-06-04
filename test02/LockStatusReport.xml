@@ -1,0 +1,12 @@
+<?xml version:"1.0" encoding="utf-8"?>
+<Msg>
+	<Head>
+		<Version>1.0</Version>
+		<Date>2014-08-06</Date>
+		<Time>16:21:30</Time>
+		<MsgType>LockStatusReport</MsgType>
+	</Head>
+		<DeviceIp>172.18.2.107</DeviceIp>
+		<PortNumber></PortNumber>
+		<Status>ON</Status>
+</Msg>

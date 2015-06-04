@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    
+    <title>设备信息查询</title>
+    <link rel='stylesheet' href='/stylesheets/stylesheets.css' />
+    <link rel='stylesheet' href='/stylesheets/timepicker.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap-fileupload.css' />
+    <link rel='stylesheet' href='/stylesheets/jquery/ui.css' />
+    <link rel="stylesheet" href="/stylesheets/jquery/jquery.datetimepicker.css"/>
+    <link rel='stylesheet' href='/stylesheets/epiechart/jquery.easy-pie-chart.css' />
+    <link rel='stylesheet' href='/stylesheets/fancybox/jquery.fancybox.css' />
+    <link rel='stylesheet' href='/stylesheets/uniform/uniform.css' />
+    <link rel='stylesheet' href='/stylesheets/select/select.css' />
+    <link rel='stylesheet' href='/stylesheets/tagsinput/jquery.tagsinput.css' />
+    <link rel='stylesheet' href='/stylesheets/multiselect/multiselect.css' />
+    <link rel='stylesheet' href='/stylesheets/validation/validationEngine.jquery.css' />
+    <link rel='stylesheet' href='/stylesheets/stepywizard/jquery.stepy.css' />
+    <link rel='stylesheet' href='/stylesheets/mcustomscrollbar/mCustomScrollbar.css' />
+    <link rel='stylesheet' href='/stylesheets/cleditor/cleditor.css' />
+    <link rel='stylesheet' href='/stylesheets/shbrush/shCoreDefault.css' />
+    <link rel='stylesheet' href='/stylesheets/shbrush/shThemeDefault.css' />
+    <link rel='stylesheet' href='/stylesheets/icons.css' />
+    <link rel='stylesheet' href='/stylesheets/styling.css' />
+    <link rel='stylesheet' href='/stylesheets/stylesheet.css' />
+    <link rel='stylesheet' href='/stylesheets/opera.css' />
+    <link rel='stylesheet' href='/stylesheets/mystyles.css' />
+
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-1.9.1.min.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-ui-1.10.0.custom.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery.datetimepicker.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-migrate-1.1.1.min.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/globalize.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/other/excanvas.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/other/jquery.mousewheel.min.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/bootstrap/bootstrap.min.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/cookies/jquery.cookies.2.2.0.min.js'></script>
+    <script type='text/javascript' src="/javascripts/plugins/uniform/jquery.uniform.min.js"></script>
+    <script type='text/javascript' src='/javascripts/plugins/datatables/jquery.dataTables.min.js'></script> 
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/XRegExp.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/shCore.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/shBrushXml.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/shBrushJScript.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/shBrushCss.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins.js'></script>
+    <script type='text/javascript' src='/javascripts/actions.js'></script>
+
+    <script type='text/javascript' src='/javascripts/local/DeviceInfoQuery.js'></script>
+
+</head>
+<body>
+    <!--加载页面动画 begin-->
+    <div id="loader"><img src="/img/loader.gif"/></div>
+    <!--加载页面动画 end-->
+    <!--wrapper begin-->
+    <div class="wrapper">
+        <!--工具条 begin-->
+        <div class="sidebar">
+            <div class="top">
+                <h2 style="color: white">网管系统</h2>
+            </div>
+            <div class="user">
+                <a href="#" class="name">
+                    <span>李四</span>
+                    <span class="sm">测试组</span>
+                </a>
+            </div>
+            <div class="nContainer">
+                <ul class="navigation">
+                    <li class="active"><a href="/TopTopology" class="blyellow">系统拓扑</a></li>
+                    <li class="active"><a href="/SubTopology:10" class="blgreen">子系统拓扑</a></li>
+                    <li class="active"><a href="/CheckBox:1" class="blred">机柜图</a></li>
+                    <li class="active"><a href="/DeviceCurrStatusQuery" class="blyellow">设备实时状态</a></li>
+                    <li class="active"><a href="/AppCurrStatusQuery" class="blgreen">模块实时状态</a></li>
+                    <li class="active"><a href="/DeviceAlarmQuery" class="blred">设备报警查询</a></li>
+                    <li class="active">
+                        <a href="#" class="bldblue">文件完整性检查</a>
+                        <div class="open"></div>
+                        <ul>
+                            <li><a href="/FileCheckManagement">文件完整性检查管理</a></li>
+                            <li><a href="/">查看文件完整性检查情况</a></li>
+                            <li><a href="/FileAlarmQuery">文件完整性报警查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#" class="blpurple">磁盘阵列检查</a>
+                        <div class="open"></div>
+                        <ul>
+                            <li><a href="/DiskCheckManagement">磁盘阵列管理</a></li>
+                            <li><a href="/DiskAlarmQuery">磁盘阵列报警查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="/" class="blorange">网管报警开关</a></li>
+                    <li class="active"><a href="/DeviceInfoQuery" class="blblue">设备信息查询</a></li>
+                    <li class="active"><a href="/Telephone" class="blorange">常用电话</a></li>
+                </ul>
+                <a class="close">
+                    <span class="ico-remove"></span>
+                </a>
+            </div>
+            <div class="widget">
+                <div class="datepicker"></div>
+            </div>
+        </div>
+        <!--工具条 end-->
+
+        <div class="body">
+            <div class="content">
+                <div class="page-header">
+                    <div class="icon" style="visibility:hidden;">
+                        <span class="ico-folder"></span>
+                    </div>
+                    <h2>设备信息查询</h2>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="block">
+                            <table class="table" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td width="10%">设备名称</td>
+                                    <td width="10%">
+                                        <input id="devicename" name="devicename" type="text"/>
+                                    </td>
+                                    <td widht="2%"></td>
+                                    <td width="10%">设备类型</td>
+                                    <td width="10%">
+                                        <select id="devicetype" name="devicetype">
+                                            <option value="">请选择</option>
+                                            <option value="解扰卡">解扰卡</option>
+                                            <option value="转码服务器">转码服务器</option>
+                                        </select>
+                                    </td>
+                                    <td widht="2%"></td>
+                                    <td width="10%">所属子系统</td>
+                                    <td width="10%">
+                                        <select id="subsys" name="subsys">
+                                            <option value="">请选择</option>
+                                            <option value="信道监测子系统">信道监测子系统</option>
+                                            <option value="采集转码子系统">采集转码子系统</option>
+                                        </select>
+                                    </td>
+                                    <td widht="2%"></td>
+                                    <td width="10%">设备IP</td>
+                                    <td width="10%">
+                                        <input id="deviceIP" name="deviceIP"/>
+                                    </td>
+                                    <td>
+                                        <button class="btn" type="button" onclick="queryDeviceStatus()">查询</button>
+                                        <button class="btn" type="button">报表</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!--设备列表 begin-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="block">
+                            <div class="head blue">
+                                <h2>设备列表</h2>
+                            </div>
+
+                            <div style="height: 950px; overflow-y: scroll; clear: right;" class="data-fluid">
+                                <table class="table dtable lcnp" cellpadding="0" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox" class="checkall"/></th>
+                                        <th>设备名称</th>
+                                        <th>设备类型</th>
+                                        <th>设备位置</th>
+                                        <th>所属子系统</th>
+                                        <th>设备IP地址</th>
+                                        <th>设备位置</th>
+                                        <th>供应商</th>
+                                        <th>业务信息</th>
+                                        <th>备注</th>
+                                        <th width="1%"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="deviceList">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--设备列表 end-->
+
+            </div>
+        </div>
+    </div>
+    <!--wrapper end-->
+    
+</body>
+</html>

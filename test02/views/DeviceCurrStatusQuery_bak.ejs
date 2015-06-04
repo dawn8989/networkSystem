@@ -1,0 +1,147 @@
+<% layout( 'layout' ) -%>
+
+<div class="content">
+    <div class="page-header">
+        <div class="icon">
+            <span class="ico-folder"></span>
+        </div>
+        <h2>设备实时状态查询</h2>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="block">
+                <table class="table" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                    <tr>
+                        <td width="10%" align="right">设备名称</td>
+                        <td width="10%">
+                            <input id="taskName" name="carrtask.name" type="text" value=""/>
+                        </td>
+                        <td widht="2%"></td>
+                        <td width="10%">设备类型</td>
+                        <td width="10%">
+                            <input type="hidden" id="searchSatelliteIdValue" value="" />
+                            <select id="searchSatelliteId" name="carrtask.carrier.satellite.id">
+                                <option value="">请选择</option>
+                            </select>
+                        </td>
+                        <td widht="2%"></td>
+                        <td width="10%">所属子系统</td>
+                        <td width="10%">
+                            <input type="hidden" id="searchWavebandValue" value=""/>
+                            <select id="searchWaveband" name="carrtask.carrier.waveband">
+                                <option value="">请选择</option>
+                                <option value="C">C波段</option>
+                                <option value="Ku">Ku波段</option>
+                            </select>
+                        </td>
+                        <td widht="2%"></td>
+                        <td width="10%">设备状态</td>
+                        <td width="10%">
+                            <input type="hidden" id="searchWavebandValue" value=""/>
+                            <select id="searchWaveband" name="carrtask.carrier.waveband">
+                                <option value="">请选择</option>
+                                <option value="C">正常</option>
+                                <option value="Ku">报警</option>
+                            </select>
+                        </td>
+                        <td widht="2%"></td>
+                        <td>
+                            <button class="btn" type="button" onclick="queryTask()">查询</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--设备列表 begin-->
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="block">
+                <div class="head blue">
+                    <h2>设备列表</h2>
+                </div>
+
+                <div style="height: 450px; overflow-y: scroll; clear: right;" class="data-fluid">
+                    <table class="table dtable lcnp" cellpadding="0" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th><input type="checkbox" class="checkall"/></th>
+                            <th>设备名称</th>
+                            <th>设备类型</th>
+                            <th>所属子系统</th>
+                            <th>设备IP地址</th>
+                            <th>设备位置</th>
+                            <th>设备状态</th>
+                            <th width="1%"></th>
+                        </tr>
+                        </thead>
+                        <tbody id="taskList">
+                            <c:forEach var="item" items="${taskList }" varStatus="s">
+                                <tr>
+                                    <td><input type="checkbox" name="order[]" value="${item.id }"/></td>
+                                    <td id="name">${item.name }</td>
+                                    <td id="satelliteName">${item.carrier.satellite.name }</td>
+                                    <td id="band">${item.carrier.waveband }</td>
+                                    <td id="polarize">${item.carrier.polarize }</td>
+                                    <td id="startFreq">${item.startFreq }</td>
+                                    <td id="endFreq">${item.endFreq }</td>
+                                    <td></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--设备列表 end-->
+
+    <!--设备状态 begin-->
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="block">
+                <div class="head blue">
+                    <h2>设备状态</h2>
+                </div>
+
+                <div style="height: 350px; overflow-y: scroll; clear: right;" class="data-fluid">
+                    <table class="table dtable lcnp" cellpadding="0" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th><input type="checkbox" class="checkall"/></th>
+                            <th>模块名称</th>
+                            <th>指标</th>
+                            <th>实测值</th>
+                            <th>门限</th>
+                            <th>状态</th>
+                            <th>报警描述</th>
+                            <th width="1%"></th>
+                        </tr>
+                        </thead>
+                        <tbody id="taskList">
+                            <c:forEach var="item" items="${taskList }" varStatus="s">
+                                <tr>
+                                    <td><input type="checkbox" name="order[]" value="${item.id }"/></td>
+                                    <td id="name">${item.name }</td>
+                                    <td id="satelliteName">${item.carrier.satellite.name }</td>
+                                    <td id="band">${item.carrier.waveband }</td>
+                                    <td id="polarize">${item.carrier.polarize }</td>
+                                    <td id="startFreq">${item.startFreq }</td>
+                                    <td id="endFreq">${item.endFreq }</td>
+                                    <td></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--设备状态 end-->
+</div>
+    
+    

@@ -1,0 +1,11 @@
+<?xml version:"1.0" encoding="utf-8"?>
+<Msg>
+	<Head>
+		<Version>1.0</Version>
+		<MsgType>PingStatusReport</MsgType>
+	</Head>
+	<Ping>
+		<DeviceIp>172.18.2.107</DeviceIp>
+		<PingStatus>True</PingStatus>
+	</Ping>
+</Msg>

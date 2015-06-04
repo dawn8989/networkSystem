@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Msg>
+	<Head>
+		<Version>1</Version>
+		<Date>2014-08-06</Date>
+		<Time>16:21:30</Time>
+		<MsgType>SendSysInfo</MsgType>
+	</Head>
+	<SysInfo>
+		<CpuTemp>50</CpuTemp>
+		<HwTemp>45</HwTemp>
+		<FanRpm>1700</FanRpm>
+		<CpuUsage>30</CpuUsage>
+		<MemUsage>30</MemUsage>
+		<Network  IP="192.168.0.1" Usage="30%">
+		<Network>
+			<IP>192.168.0.1</IP>
+			<Usage>30%</Usage>
+		</Network>
+		<Network  IP="192.168.0.2" Usage="40%">
+		<Process Name = "QQ.exe"ThreadNum ="100"HandleNum  = "100"IORead ="100"IOWrite ="100"IOReadByte ="100"IOWriteByte ="100"/>
+		<Process Name = "Foxmail.exe"ThreadNum ="100"HandleNum  = "100"IORead ="100"IOWrite ="100"IOReadByte ="100"IOWriteByte ="100"/>
+		<Process>
+			<Name>QQ.exe</Name>
+			<ThreadNum>100</ThreadNum>
+			<HandleNum>100</HandleNum>
+			<IORead>100</IORead>
+			<IOWrite>100</IOWrite>
+			<IOReadByte>100</IOReadByte>
+			<IOWriteByte>100</IOWriteByte>
+		</Process>
+	</SysInfo>
+</Msg>
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    
+    <title>设备实时状态查询</title>
+    <link rel='stylesheet' href='/stylesheets/stylesheets.css' />
+    <link rel='stylesheet' href='/stylesheets/timepicker.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/jquery/ui.css' />
+    <link rel='stylesheet' href='/stylesheets/epiechart/jquery.easy-pie-chart.css' />
+    <link rel='stylesheet' href='/stylesheets/fancybox/jquery.fancybox.css' />
+    <link rel='stylesheet' href='/stylesheets/uniform/uniform.css' />
+    <link rel='stylesheet' href='/stylesheets/select/select.css' />
+    <link rel='stylesheet' href='/stylesheets/tagsinput/jquery.tagsinput.css' />
+    <link rel='stylesheet' href='/stylesheets/multiselect/multiselect.css' />
+    <link rel='stylesheet' href='/stylesheets/validation/validationEngine.jquery.css' />
+    <link rel='stylesheet' href='/stylesheets/stepywizard/jquery.stepy.css' />
+    <link rel='stylesheet' href='/stylesheets/mcustomscrollbar/mCustomScrollbar.css' />
+    <link rel='stylesheet' href='/stylesheets/cleditor/cleditor.css' />
+    <link rel='stylesheet' href='/stylesheets/shbrush/shCoreDefault.css' />
+    <link rel='stylesheet' href='/stylesheets/shbrush/shThemeDefault.css' />
+    <link rel='stylesheet' href='/stylesheets/icons.css' />
+    <link rel='stylesheet' href='/stylesheets/styling.css' />
+    <link rel='stylesheet' href='/stylesheets/stylesheet.css' />
+    <link rel='stylesheet' href='/stylesheets/opera.css' />
+    <link rel='stylesheet' href='/stylesheets/mystyles.css' />
+
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-1.9.1.min.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-ui-1.10.0.custom.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-migrate-1.1.1.min.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/globalize.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/other/excanvas.js'></script>
+
+    <script type='text/javascript' src='/javascripts/plugins/other/jquery.mousewheel.min.js'></script>
+
+    <script type='text/javascript' src='/javascripts/plugins/bootstrap/bootstrap.min.js'></script>
+
+    <script type='text/javascript' src='/javascripts/plugins/cookies/jquery.cookies.2.2.0.min.js'></script>
+
+    <script type='text/javascript' src="/javascripts/plugins/uniform/jquery.uniform.min.js"></script>
+
+    <script type='text/javascript' src='/javascripts/plugins/datatables/jquery.dataTables.min.js'></script>
+
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/XRegExp.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/shCore.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/shBrushXml.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/shBrushJScript.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/shbrush/shBrushCss.js'></script>
+
+    <script type='text/javascript' src='/javascripts/plugins.js'></script>
+    <script type='text/javascript' src='/javascripts/charts.js'></script>
+    <script type='text/javascript' src='/javascripts/actions.js'></script>
+
+    <script type='text/javascript' src='/javascripts/plugins/jflot/jquery.flot.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jflot/jquery.flot.stack.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jflot/jquery.flot.pie.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jflot/jquery.flot.resize.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jflot/jquery.flot.crosshair.js'></script>
+
+    <script type='text/javascript' src='/javascripts/local/TemporaryDutyManagement.js'></script>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="sidebar">
+            <div class="top">
+                <h2 style="color: white">网管系统</h2>
+            </div>
+            <div class="user">
+                <a href="#" class="name">
+                    <span>李四</span>
+                    <span class="sm">测试组</span>
+                </a>
+            </div>
+            <div class="nContainer">
+                <ul class="navigation">
+                    <li class="active"><a href="operation_status.html.html" class="blyellow">系统拓扑</a></li>
+                    <li class="active"><a href="htmls/antenna.html" class="blgreen">子系统拓扑</a></li>
+                    <li class="active"><a href="htmls/manual_duty.html" class="blred">机柜图</a></li>
+                    <li class="active"><a href="operation_status.html.html" class="blyellow">设备实时状态</a></li>
+                    <li class="active"><a href="htmls/antenna.html" class="blgreen">模块实时状态</a></li>
+                    <li class="active"><a href="htmls/manual_duty.html" class="blred">设备报警查询</a></li>
+                    <li class="active">
+                        <a href="#" class="bldblue">文件完整性检查</a>
+                        <div class="open"></div>
+                        <ul>
+                            <li><a href="results_query.html">文件完整性检查管理</a></li>
+                            <li><a href="results_query.html">查看文件完整性检查情况</a></li>
+                            <li><a href="results_query.html">文件完整性报警查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#" class="blpurple">磁盘阵列检查</a>
+                        <div class="open"></div>
+                        <ul>
+                            <li><a href="results_query.html">磁盘阵列管理</a></li>
+                            <li><a href="results_query.html">磁盘阵列报警查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="results_query.html" class="blorange">网管报警开关</a></li>
+                    <li class="active"><a href="results_query.html" class="blblue">设备信息查询</a></li>
+                    <li class="active"><a href="results_query.html" class="blorange">常用电话</a></li>
+                </ul>
+                <a class="close">
+                    <span class="ico-remove"></span>
+                </a>
+            </div>
+            <div class="widget">
+                <div class="datepicker"></div>
+            </div>
+        </div>
+
+        <div class="body">
+        	<%- body %>
+        </div>
+
+    </div>
+</body>
+</html>
+
+

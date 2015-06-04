@@ -1,0 +1,23 @@
+[
+	{
+		TaskId:
+		Name:
+		Type:
+		Random: //随机数，该任务要被发往的终端唯一标示
+		InitTime:
+		StartTime:
+		EndTime:
+		Frequency:
+		NormalSize:
+		SizeThr:
+		LostTime:
+		FileSavedTime:
+		Content:[
+					{
+						CheckId:
+						FileName:
+						Url:
+					},
+				]
+	}
+]

@@ -1,0 +1,38 @@
+[
+	{Ip1, Source1},
+	{Ip2, Source1},
+	{Ip3, Source1}
+]
+//其中，Ip1,Ip2,Ip3是设备1上的三个不同IP地址，Source1是设备1的相关实时设备信息
+
+devlist.js
+DevList = [ d1, d2 , d3 ];
+IPTable = { "192.168.1.10" : 0,
+			"192.168.1.11" : 0,
+ 			"192.168.1.12" : 0,
+ 			"192.168.1.13" : 1,
+ };
+
+XML : ip1,ip2,ip3, dev_info 
+
+index = IPTable[ip1] ;
+if (index===undefined) {
+	IPTable[ip1] = DevList.length;
+	IPTable[ip2] = DevList.length;
+	IPTable[ip3] = DevList.length;
+	DevList[DevList.length] = {};
+}
+else {
+	dev = DevList[index];
+	dev <- xml ;
+}
+
+
+
+app.js
+var DEV = require ( './DevList.js')
+
+DEV.DevList[0];
+
+
+console.log(DevList);
