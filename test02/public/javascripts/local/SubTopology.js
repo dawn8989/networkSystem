@@ -63,7 +63,8 @@ $(function(){
 		node.setSize(39,52);
 		node.setImage('./img/sub/'+setBackgroundPic(device.DeviceInfo.DeviceHeight,device.DeviceInfo.DeviceType)+'.png');
 		node.dragable=false;
-		node.showSelected=false;								
+		node.showSelected=false;	
+		node.id=device.Id;
 		node.mouseover(function(event){	
 			currentDevice=this;
 			mouseOnDevices=true;
@@ -117,7 +118,7 @@ $(function(){
 			$("#tip").css({visibility:"hidden"});
 			$("#tip div").hide();
 		});
-		node.dbclick(function(event){window.location.href=url = "http://localhost:3000/CheckBox:" + device.DeviceId;});							
+		node.dbclick(function(event){window.location.href= "http://localhost:3000/CheckBox:" + device.DeviceId;});							
 		var closeAlarmNode=new JTopo.Node();
 		closeAlarmNode.setBound(x+5,y+35);
 		closeAlarmNode.setImage('./img/sub/cha.png',true);
@@ -285,10 +286,23 @@ $(function(){
 				currentDevice.endAlarm();
 			}, 
 			'item_5': function() {											
-				alert('显示业务信息');
+				//alert('显示业务信息');
+				if(devices[currentDevice.id-1].DeviceInfo.DeviceType.indexOf("信道监测卡")>=0||devices[currentDevice.id-1].DeviceInfo.DeviceType.indexOf("频谱仪")>=0)
+				{
+					$('#showServiceDialog1 h4').html(devices[currentDevice.id-1].DeviceInfo.DeviceType);
+					$('#showServiceDialog1 .showip').html("IP:"+devices[currentDevice.id-1].Ip[0]);
+					$('#showServiceDialog1').modal('show');
+				}				
+				if(devices[currentDevice.id-1].DeviceInfo.DeviceType.indexOf("码流监测服务器")>=0||devices[currentDevice.id-1].DeviceInfo.DeviceType.indexOf("码流录制服务器")>=0||devices[currentDevice.id-1].DeviceInfo.DeviceType.indexOf("转码服务器")>=0)
+				{
+					$('#showServiceDialog2 h4').html(devices[currentDevice.id-1].DeviceInfo.DeviceType);
+					$('#showServiceDialog2 .showip').html("IP:"+devices[currentDevice.id-1].Ip[0]);
+					$('#showServiceDialog2').modal('show');
+				}
 			}, 
 			'item_6': function() {											
-				alert('打开设备网管界面');
+				//alert('打开设备网管界面');
+				window.location.href = "http://localhost:8888";
 			}, 
 			'item_7': function() {											
 				alert('远程登录设备');
@@ -300,9 +314,9 @@ $(function(){
 		onContextMenu: function(e) {
 			return	mouseOnDevices?true:false;
 		}
-	});	var url=window.location.href;
+	});
 	
-	 $("#subSystems").change(function(){
+	$("#subSystems").change(function(){
 		for(var i=0;i<deviceNodeArray.length;i++)
 		{
 			scene.remove(deviceNodeArray[i]);

@@ -7,8 +7,11 @@
     <title>子系统拓扑</title>
     <link rel='stylesheet' href='/stylesheets/stylesheets.css' />
     <link rel='stylesheet' href='/stylesheets/timepicker.css' />
-    <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
+    
+ 
     <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap-fileupload.css' />
+	<link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap-modal.css' />
+	<link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/jquery/ui.css' />
     <link rel='stylesheet' href='/stylesheets/epiechart/jquery.easy-pie-chart.css' />
     <link rel='stylesheet' href='/stylesheets/fancybox/jquery.fancybox.css' />
@@ -29,8 +32,10 @@
     <link rel='stylesheet' href='/stylesheets/mystyles.css' />
     <style>
         label{text-align:center;padding:5px 0px; font:bold 12px/20px arial,helvetica,sans-serif;}
-		.row-fluid{padding-bottom:10px;}
-
+		.row-fluid{padding-bottom:6px;}
+		.modal-body{max-height:800px;}
+		.modal.fade{top:-100%;}
+		.span5{border: 1px solid rgb(215, 212, 212);margin-left:80px;margin-bottom:0px;}
         #tip{			
 			visibility:hidden;
 			position:absolute;
@@ -57,6 +62,8 @@
     <script type='text/javascript' src='/javascripts/plugins/other/excanvas.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/other/jquery.mousewheel.min.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/bootstrap/bootstrap.min.js'></script>
+	<script type='text/javascript' src='/javascripts/plugins/bootstrap/bootstrap-modal.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/bootstrap/bootstrap-modalmanager.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/cookies/jquery.cookies.2.2.0.min.js'></script>
     <script type='text/javascript' src="/javascripts/plugins/uniform/jquery.uniform.min.js"></script>
     <script type='text/javascript' src='/javascripts/plugins/datatables/jquery.dataTables.min.js'></script> 
@@ -70,6 +77,7 @@
      <script type='text/javascript' src="/javascripts/jtopo-0.4.8-min.js"></script>
 	 <script type='text/javascript' src="/javascripts/contextMenu.js"></script>
     <script type='text/javascript' src='/javascripts/local/SubTopology.js'></script>
+
 
 </head>
 <body>
@@ -235,12 +243,12 @@
 
  <!--添加设备弹出框 begin-->
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">添加设备</h4>
+                    <h4 class="modal-title">添加设备</h4>
                 </div>
                 <form id="add_form" method="post" action="addDevice">
                     <div class="modal-body">
@@ -486,8 +494,9 @@
             </div>
         </div>
     </div>
-    <!--门限设置弹出框 end-->
- <div class="modal fade" id="setThresholdDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <!--添加设备弹出框 end-->
+    <!--门限设置弹出框 start-->
+	<div class="modal fade" id="setThresholdDialog" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -580,8 +589,9 @@
                             </div>
                         </div>
                         <div class="row-fluid">
+							
                             <label class="span3">监控进程</label>
-                            <div class="span9">
+                            <div class="span6">
                                 <select id="process1" name="process1">
                                     <option value="">请选择</option>
 										<option value="SCViewer.exe">SCViewer.exe</option>  
@@ -593,12 +603,14 @@
 										<option value="MoveFileManager.exe">MoveFileManager.exe</option>
 										<option value="synForDataCenterVideo.exe">synForDataCenterVideo.exe</option>
 										<option value="sls.exe">sls.exe</option>										
-                                </select>
+                                </select>								
                             </div>
+							
+							<button type="button" class="span3" data-toggle="modal" data-target="#setProcessDialog">监控项设置</button>
                         </div>
 						<div class="row-fluid">
                             <label class="span3">监控进程</label>
-                            <div class="span9">
+                            <div class="span6">
                                 <select id="process2" name="process2">
                                     <option value="">请选择</option>
 										<option value="SCViewer.exe">SCViewer.exe</option>  
@@ -612,10 +624,11 @@
 										<option value="sls.exe">sls.exe</option>										
                                 </select>
                             </div>
+							<button type="button" class="span3" data-toggle="modal" data-target="#setProcessDialog">监控项设置</button>
                         </div>
 						<div class="row-fluid">
                             <label class="span3">监控进程</label>
-                            <div class="span9">
+                            <div class="span6">
                                 <select id="process3" name="process3">
                                     <option value="">请选择</option>
 										<option value="SCViewer.exe">SCViewer.exe</option>  
@@ -628,8 +641,10 @@
 										<option value="synForDataCenterVideo.exe">synForDataCenterVideo.exe</option>
 										<option value="sls.exe">sls.exe</option>										
                                 </select>
-                            </div>
+                            </div>		
+							<button type="button" class="span3" data-toggle="modal" data-target="#setProcessDialog">监控项设置</button>
                         </div>
+						
                         <div class="row-fluid">
                             <label class="span3">SNMPTRAP报警</label>
                             <div class="span9">
@@ -650,7 +665,145 @@
             </div>
         </div>
     </div>
-    <!--添加设备弹出框 end-->
+    <!--门限设置弹出框 end-->
+	
+    <!--监控项设置弹出框 start-->	
+	<div class="modal fade" id="setProcessDialog" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">监控项设置</h4>
+                </div>
+				
+                <form id="setProcessForm" method="post" >
+                    <div class="modal-body">
+                        <div class="row-fluid">
+                            <label class="span3">线程数</label>
+                            <div class="span9">
+                                <input id="pingtimes1" name="pingtimes1" value=">" type="text"/>
+                            </div>
+                        </div>
+						<div class="row-fluid">
+                            <label class="span3">句柄数</label>
+                            <div class="span9">
+                                <input id="pingtimes2" name="pingtimes2" value=">" type="text"/>
+                            </div>
+                        </div>
+						<div class="row-fluid">
+                            <label class="span3">I/O读取字节数</label>
+                            <div class="span9">
+                                <input id="pingtimes3" name="pingtimes3"  value="<" type="text"/>
+                            </div>
+                        </div>
+						<div class="row-fluid">
+                            <label class="span3">I/O写入字节数</label>
+                            <div class="span9">
+                                <input id="pingtimes4" name="pingtimes4" value="<"  type="text"/>
+                            </div>
+                        </div>						                            
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    <!--监控项设置弹出框 end-->
+
+	<!--显示业务信息弹出框1 start-->	
+	<div class="modal fade" id="showServiceDialog1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">业务信息</h4>
+                </div>				
+				<div class="modal-body">
+					<div class="row-fluid">
+						<label class="span12 showip">IP:192.168.100.100</label>
+					</div>
+					<div class="row-fluid">
+						<label class="span12 showservice">***业务信息***</label>
+					</div>													
+				</div>
+				<div class="modal-footer">                        
+					<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+				</div>           
+            </div>
+        </div>
+    </div>
+    <!--显示业务信息弹出框1 end-->
+	<!--显示业务信息弹出框2 start-->	
+	<div class="modal fade" id="showServiceDialog2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">业务信息</h4>
+                </div>				
+				<div class="modal-body">
+					<div class="row-fluid">
+						<label class="span3 showip">IP:192.168.100.100</label>
+					</div>
+					<div class="row-fluid">
+						<label class="span3 ">总数：10</label>
+					</div>											
+					<label class="span5 ">节目名称</label>	
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>
+					<label class="span5 ">中兴6A</label>					
+				</div>
+				<div class="modal-footer">                        
+					<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+				</div>           
+            </div>
+        </div>
+    </div>
+    <!--显示业务信息弹出框2 end-->	
+	<!--显示业务信息弹出框3 start-->	
+	<div class="modal fade" id="showServiceDialog3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">业务信息</h4>
+                </div>				
+				<div class="modal-body">
+					<div class="row-fluid">
+						<label class="span12 showip">IP:192.168.100.100</label>
+					</div>
+					<div class="row-fluid">
+						<label class="span12 showservice">***业务---信息***</label>
+					</div>													
+				</div>
+				<div class="modal-footer">                        
+					<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+				</div>           
+            </div>
+        </div>
+    </div>
+    <!--显示业务信息弹出框3 end-->
 
 </body>
+
 </html>

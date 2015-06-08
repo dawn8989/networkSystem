@@ -115,6 +115,9 @@ $(function(){
 		node.setImage('./img/checkbox/'+setBackgroundPic(device.DeviceInfo.DeviceHeight,device.DeviceInfo.DeviceType)+'.png');
 		node.showSelected=false;
 		node.dragable=false;
+		node.type=device.DeviceInfo.DeviceType;
+		if(device.Ip)
+			node.Ip=device.Ip;		
 		node.startAlarm=function(){				
 			// node.alarmStarted=
 			// setInterval(function(){
@@ -278,16 +281,28 @@ $(function(){
 				scene.remove(currentDevice);
 			}, 
 			'item_4': function() {											
-				$( "#setThresholdDialog" ).dialog( "open" );
+				$('#setThresholdDialog').modal('show');
 			}, 
 			'item_5': function() {											
 				currentDevice.endAlarm();				
 			}, 
 			'item_6': function() {											
-				alert('显示业务信息');
+				if(currentDevice.type.indexOf("信道监测卡")>=0||currentDevice.type.indexOf("频谱仪")>=0)
+				{
+					$('#showServiceDialog1 h4').html(currentDevice.type);
+					$('#showServiceDialog1 .showip').html("IP:"+currentDevice.Ip[0]);
+					$('#showServiceDialog1').modal('show');
+				}				
+				if(currentDevice.type.indexOf("码流监测服务器")>=0||currentDevice.type.indexOf("码流录制服务器")>=0||currentDevice.type.indexOf("转码服务器")>=0)
+				{
+					$('#showServiceDialog2 h4').html(currentDevice.type);
+					$('#showServiceDialog2 .showip').html("IP:"+currentDevice.Ip[0]);
+					$('#showServiceDialog2').modal('show');
+				}
 			}, 
 			'item_7': function() {											
 				alert('打开设备网管界面');
+				window.location.href = "http://localhost:6666";
 			}, 
 			'item_8': function() {											
 				alert('远程登录设备');
