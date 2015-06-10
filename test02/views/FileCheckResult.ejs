@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     
     <title>软件模块实时状态查询</title>
-    <link rel='stylesheet' href='/stylesheets/stylesheets.css' />
+   <link rel='stylesheet' href='/stylesheets/stylesheets.css' />
     <link rel='stylesheet' href='/stylesheets/timepicker.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap-fileupload.css' />
     <link rel='stylesheet' href='/stylesheets/jquery/ui.css' />
+    <link rel="stylesheet" href="/stylesheets/jquery/jquery.datetimepicker.css"/>
     <link rel='stylesheet' href='/stylesheets/epiechart/jquery.easy-pie-chart.css' />
     <link rel='stylesheet' href='/stylesheets/fancybox/jquery.fancybox.css' />
     <link rel='stylesheet' href='/stylesheets/uniform/uniform.css' />
@@ -31,6 +32,7 @@
 
     <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-1.9.1.min.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-ui-1.10.0.custom.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery.datetimepicker.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-migrate-1.1.1.min.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/jquery/globalize.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/other/excanvas.js'></script>
@@ -46,10 +48,12 @@
     <script type='text/javascript' src='/javascripts/plugins/shbrush/shBrushCss.js'></script>
     <script type='text/javascript' src='/javascripts/plugins.js'></script>
     <script type='text/javascript' src='/javascripts/actions.js'></script>
-    <script type='text/javascript' src='/javascripts/local/AppCurrStatusQuery.js'></script>
+
+    <script type='text/javascript' src='/javascripts/local/FileAlarmQuery.js'></script>
+
 
 </head>
-<body>
+<body>	
     <!--加载页面动画 begin-->
     <div id="loader"><img src="/img/loader.gif"/></div>
     <!--加载页面动画 end-->
@@ -111,53 +115,40 @@
                     <div class="icon" style="visibility:hidden;">
                         <span class="ico-folder"></span>
                     </div>
-                    <h2>软件模块实时状态查询</h2>
+                    <h2>文件检查情况</h2>
                 </div>
 
-                <div class="row-fluid">
+                <div class="row-fluid">             
                     <div class="span12">
                         <div class="block">
                             <table class="table" cellpadding="0" cellspacing="0" width="100%">
                                 <tbody>
                                 <tr>
-                                    <td width="10%">软件模块名称</td>
-                                    <td width="10%">
-                                        <select id="appname" name="appname">
+									<td width="15%">任务名称</td>
+                                    <td width="15%">
+                                        <select id="taskname" name="taskname">
                                             <option value="">请选择</option>
-                                            <option value="MediaConvert.exe">MediaConvert</option>
-                                            <option value="MoveFileManager.exe">MoveFileManager</option>
+                                            <option value="573本地转码文件检查">573本地转码文件检查</option>
+                                            <option value="数据中心转存文件检查">数据中心转存文件检查</option>
+                                            <option value="573本地码流录制文件检查">573本地码流录制文件检查</option>
+                                        </select>
+									</td>
+                                    <td widht="2%"></td>
+                                    <td width="10%">检查内容</td>
+                                    <td width="10%">
+                                        <select id="content" name="content">
+                                            <option value="">请选择</option>
+                                            <option value="">全部</option>
                                         </select>
                                     </td>
                                     <td widht="2%"></td>
-                                    <td width="10%">设备类型</td>
+                                    <td width="10%">日期</td>
                                     <td width="10%">
-                                        <select id="devicetype" name="devicetype">
-                                            <option value="">请选择</option>
-                                            <option value="解扰卡">解扰卡</option>
-                                            <option value="转码服务器">转码服务器</option>
-                                        </select>
-                                    </td>
-                                    <td widht="2%"></td>
-                                    <td width="10%">所属子系统</td>
-                                    <td width="10%">
-                                        <select id="subsys" name="subsys">
-                                            <option value="">请选择</option>
-                                            <option value="信道监测子系统">信道监测子系统</option>
-                                            <option value="采集转码子系统">采集转码子系统</option>
-                                        </select>
-                                    </td>
-                                    <td widht="2%"></td>
-                                    <td width="10%">状态</td>
-                                    <td width="10%">
-                                        <select id="alarmstatus" name="alarmstatus">
-                                            <option value="">请选择</option>
-                                            <option value="OFF">正常</option>
-                                            <option value="ON">报警</option>
-                                        </select>
+                                        <input type="text" id="date" class="datetimepicker"/>
                                     </td>
                                     <td widht="2%"></td>
                                     <td>
-                                        <button class="btn" type="button" onclick="queryApp()">查询</button>
+                                        <button class="btn" type="button" onclick="queryFileAlarm()">查询</button>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -171,31 +162,99 @@
                     <div class="span12">
                         <div class="block">
                             <div class="head blue">
-                                <h2>软件模块列表</h2>
+                                <h2>查询结果</h2>
                             </div>
-
                             <div style="height: 950px; overflow-y: scroll; clear: right;" class="data-fluid">
-                                <table class="table dtable lcnp" cellpadding="0" cellspacing="0" width="100%">
-                                    <thead>
-                                    <tr>
-                                        <th><input type="checkbox" class="checkall"/></th>
-                                        <th>模块名称</th>
-                                        <th>设备类型</th>
-                                        <th>设备IP</th>
-                                        <th>所属子系统</th>
-                                        <th>模块状态</th>
-                                        <th>报警指标</th>
-                                        <th>实测值</th>
-                                        <th>门限值</th>
-                                        <th>报警描述</th>
-                                        <th>参考维护方案</th>
-                                        <th width="1%"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="appList">
-                                        
-                                    </tbody>
+                                <table class="table" cellpadding="0" cellspacing="0" width="100%">
+ 
+									<tr>
+										<td>中兴6A</td>
+										<td>本地目录</td>
+										<td width="70%" id="fileCheck0"></td>										
+                                    </tr>	
+									<tr>
+										<td></td>
+										<td>数据中心目录</td>
+										<td width="70%"  id="fileCheck1"></td>										
+                                    </tr>	
+									<script type="text/javascript">
+										
+										function addBlock(fatherdiv,start,end,alarm)
+										{
+											var div = document.createElement("div");
+											div.setAttribute("title",start+"---"+end);
+											var w=(end-start)*fatherdiv.offsetWidth/24/3600;
+											if(alarm)
+												div.setAttribute("style","width:"+w+"px;background-color:#ee5f5b;background-image:linear-gradient(to bottom,#ee5f5b,#c43c35);float:left;margin-left:8px;height:20px;")	
+											else
+												div.setAttribute("style","width:"+w+"px;background-color:#62c462;background-image:linear-gradient(to bottom,#62c462,#57a957);float:left;margin-left:8px;height:20px;");
+											fatherdiv.appendChild(div);											
+										}
+										addBlock(document.getElementById("fileCheck0"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck0"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck0"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck0"),1,3600*1.5,false);
+										addBlock(document.getElementById("fileCheck0"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck0"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck0"),1,3600*3.2,true);
+										addBlock(document.getElementById("fileCheck0"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck1"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck1"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck1"),1,3600*2,true);
+										addBlock(document.getElementById("fileCheck1"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck1"),1,3600*2.7,false);
+										addBlock(document.getElementById("fileCheck1"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck1"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck1"),1,3600*2,false);
+										
+										var s=new Date();
+										//alert(s.getTime());
+									</script>          
+									<tr>
+										<td>中兴6A</td>
+										<td>本地目录</td>
+										<td width="70%" id="fileCheck2"></td>										
+                                    </tr>	
+									<tr>
+										<td></td>
+										<td>数据中心目录</td>
+										<td width="70%"  id="fileCheck3"></td>										
+                                    </tr>	
+									<script type="text/javascript">
+										
+										function addBlock(fatherdiv,start,end,alarm)
+										{
+											var div = document.createElement("div");
+											div.setAttribute("title",start+"---"+end);
+											var w=(end-start)*fatherdiv.offsetWidth/24/3600;
+											if(alarm)
+												div.setAttribute("style","width:"+w+"px;background-color:#ee5f5b;background-image:linear-gradient(to bottom,#ee5f5b,#c43c35);float:left;margin-left:8px;height:20px;")	
+											else
+												div.setAttribute("style","width:"+w+"px;background-color:#62c462;background-image:linear-gradient(to bottom,#62c462,#57a957);float:left;margin-left:8px;height:20px;");
+											fatherdiv.appendChild(div);											
+										}
+										addBlock(document.getElementById("fileCheck2"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck2"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck2"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck2"),1,3600*1.5,false);
+										addBlock(document.getElementById("fileCheck2"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck2"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck2"),1,3600*3.2,true);
+										addBlock(document.getElementById("fileCheck2"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck3"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck3"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck3"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck3"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck3"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck3"),1,3600*2,true);
+										addBlock(document.getElementById("fileCheck3"),1,3600*2,false);
+										addBlock(document.getElementById("fileCheck3"),1,3600*2.7,false);
+										
+										var s=new Date();
+										//alert(s.getTime());
+									</script>                   									                                  
                                 </table>
+							 
                             </div>
                         </div>
                     </div>
@@ -206,6 +265,8 @@
         </div>
     </div>
     <!--wrapper end-->
-    
+
+															
 </body>
+	
 </html>

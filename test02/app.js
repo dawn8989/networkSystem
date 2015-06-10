@@ -14,11 +14,13 @@ var DeviceCurrStatusQuery = require('./routes/DeviceCurrStatusQuery');
 var AppCurrStatusQuery = require('./routes/AppCurrStatusQuery');
 var DeviceAlarmQuery = require('./routes/DeviceAlarmQuery');
 var FileCheckManagement = require('./routes/FileCheckManagement');
+var FileCheckResult = require('./routes/FileCheckResult');
 var FileCheckAdd = require('./routes/FileCheckAdd');
 var FileAlarmQuery = require('./routes/FileAlarmQuery');
 var DiskCheckManagement = require('./routes/DiskCheckManagement');
 var DiskAlarmQuery = require('./routes/DiskAlarmQuery');
 var DeviceInfoQuery = require('./routes/DeviceInfoQuery');
+var AlarmSwitch = require('./routes/AlarmSwitch');
 var Telephone = require('./routes/Telephone');
 var device = require('./routes/device');
 var devicenew = require('./routes/devicenew');
@@ -77,6 +79,10 @@ app.post('/queryDeviceAlarm', DeviceAlarmQuery.queryDeviceAlarm);
 app.get('/FileCheckManagement', FileCheckManagement.index);
 app.post('/queryFileTask', FileCheckManagement.queryFileTask);
 
+app.get('/FileCheckResult', FileCheckResult.index);
+//app.post('/queryFileTask', FileCheckManagement.queryFileTask);
+
+
 app.get('/FileCheckAdd', FileCheckAdd.index);
 app.post('/addContent', FileCheckAdd.addContent);
 app.post('/initContentTable', FileCheckAdd.initContentTable);
@@ -91,6 +97,10 @@ app.post('/queryDiskAlarm', DiskAlarmQuery.queryDiskAlarm);
 
 app.get('/DeviceInfoQuery', DeviceInfoQuery.index);
 app.post('/queryDeviceStatus', DeviceInfoQuery.queryDeviceStatus);
+
+app.get('/AlarmSwitch', AlarmSwitch.index);
+//app.post('/queryTelephone', Telephone.queryTelephone);
+//app.post('/addTelephone', Telephone.addTelephone);
 
 app.get('/Telephone', Telephone.index);
 app.post('/queryTelephone', Telephone.queryTelephone);

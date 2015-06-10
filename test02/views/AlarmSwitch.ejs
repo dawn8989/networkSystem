@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     
     <title>软件模块实时状态查询</title>
-    <link rel='stylesheet' href='/stylesheets/stylesheets.css' />
+   <link rel='stylesheet' href='/stylesheets/stylesheets.css' />
     <link rel='stylesheet' href='/stylesheets/timepicker.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap-fileupload.css' />
     <link rel='stylesheet' href='/stylesheets/jquery/ui.css' />
+    <link rel="stylesheet" href="/stylesheets/jquery/jquery.datetimepicker.css"/>
     <link rel='stylesheet' href='/stylesheets/epiechart/jquery.easy-pie-chart.css' />
     <link rel='stylesheet' href='/stylesheets/fancybox/jquery.fancybox.css' />
     <link rel='stylesheet' href='/stylesheets/uniform/uniform.css' />
@@ -31,6 +32,7 @@
 
     <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-1.9.1.min.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-ui-1.10.0.custom.js'></script>
+    <script type='text/javascript' src='/javascripts/plugins/jquery/jquery.datetimepicker.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/jquery/jquery-migrate-1.1.1.min.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/jquery/globalize.js'></script>
     <script type='text/javascript' src='/javascripts/plugins/other/excanvas.js'></script>
@@ -46,10 +48,12 @@
     <script type='text/javascript' src='/javascripts/plugins/shbrush/shBrushCss.js'></script>
     <script type='text/javascript' src='/javascripts/plugins.js'></script>
     <script type='text/javascript' src='/javascripts/actions.js'></script>
-    <script type='text/javascript' src='/javascripts/local/AppCurrStatusQuery.js'></script>
+
+    <script type='text/javascript' src='/javascripts/local/FileAlarmQuery.js'></script>
+
 
 </head>
-<body>
+<body>	
     <!--加载页面动画 begin-->
     <div id="loader"><img src="/img/loader.gif"/></div>
     <!--加载页面动画 end-->
@@ -91,7 +95,7 @@
                             <li><a href="/DiskAlarmQuery">磁盘阵列报警查询</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="/AlarmSwitch" class="blorange">网管报警开关</a></li>
+                    <li class="active"><a href="/AlarmSwitchAlarmSwitch" class="blorange">网管报警开关</a></li>
                     <li class="active"><a href="/DeviceInfoQuery" class="blblue">设备信息查询</a></li>
                     <li class="active"><a href="/Telephone" class="blorange">常用电话</a></li>
                 </ul>
@@ -111,101 +115,111 @@
                     <div class="icon" style="visibility:hidden;">
                         <span class="ico-folder"></span>
                     </div>
-                    <h2>软件模块实时状态查询</h2>
+                    <h2>网管报警开关</h2>
                 </div>
 
-                <div class="row-fluid">
+                <div class="row-fluid">             
                     <div class="span12">
                         <div class="block">
-                            <table class="table" cellpadding="0" cellspacing="0" width="100%">
+                            <table class="table" cellpadding="0" cellspacing="0" width="100%" style="margin-top:80px;">
                                 <tbody>
                                 <tr>
-                                    <td width="10%">软件模块名称</td>
-                                    <td width="10%">
-                                        <select id="appname" name="appname">
-                                            <option value="">请选择</option>
-                                            <option value="MediaConvert.exe">MediaConvert</option>
-                                            <option value="MoveFileManager.exe">MoveFileManager</option>
-                                        </select>
-                                    </td>
-                                    <td widht="2%"></td>
-                                    <td width="10%">设备类型</td>
-                                    <td width="10%">
-                                        <select id="devicetype" name="devicetype">
-                                            <option value="">请选择</option>
-                                            <option value="解扰卡">解扰卡</option>
-                                            <option value="转码服务器">转码服务器</option>
-                                        </select>
-                                    </td>
-                                    <td widht="2%"></td>
-                                    <td width="10%">所属子系统</td>
-                                    <td width="10%">
-                                        <select id="subsys" name="subsys">
-                                            <option value="">请选择</option>
-                                            <option value="信道监测子系统">信道监测子系统</option>
-                                            <option value="采集转码子系统">采集转码子系统</option>
-                                        </select>
-                                    </td>
-                                    <td widht="2%"></td>
-                                    <td width="10%">状态</td>
-                                    <td width="10%">
-                                        <select id="alarmstatus" name="alarmstatus">
-                                            <option value="">请选择</option>
-                                            <option value="OFF">正常</option>
-                                            <option value="ON">报警</option>
-                                        </select>
-                                    </td>
-                                    <td widht="2%"></td>
-                                    <td>
-                                        <button class="btn" type="button" onclick="queryApp()">查询</button>
-                                    </td>
-                                </tr>
+									<td width="10%"></td>
+									<td width="30%">网络断开</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">CPU过高</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">内存过高</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">CPU温度过高</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">网络使用率过高</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">进程线程数过多</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">进程句柄数过多</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">进程IO读取字节数过低</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">进程IO写入字节数过低</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">SNMPTRAP报警</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">文件大小异常</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">文件缺失</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">文件保存超期</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                                
+								<tr>
+									<td width="10%"></td>
+									<td width="30%">磁盘阵列空间过低</td>
+                                    <td width="30%"><input type="checkbox" />数据库</td>
+                                    <td width="30%"><input type="checkbox" />控制台</td>                                   
+                                </tr>                              
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
 
-                <!--设备列表 begin-->
-                <div class="row-fluid">
-                    <div class="span12">
-                        <div class="block">
-                            <div class="head blue">
-                                <h2>软件模块列表</h2>
-                            </div>
-
-                            <div style="height: 950px; overflow-y: scroll; clear: right;" class="data-fluid">
-                                <table class="table dtable lcnp" cellpadding="0" cellspacing="0" width="100%">
-                                    <thead>
-                                    <tr>
-                                        <th><input type="checkbox" class="checkall"/></th>
-                                        <th>模块名称</th>
-                                        <th>设备类型</th>
-                                        <th>设备IP</th>
-                                        <th>所属子系统</th>
-                                        <th>模块状态</th>
-                                        <th>报警指标</th>
-                                        <th>实测值</th>
-                                        <th>门限值</th>
-                                        <th>报警描述</th>
-                                        <th>参考维护方案</th>
-                                        <th width="1%"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="appList">
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--设备列表 end-->
 
             </div>
         </div>
     </div>
     <!--wrapper end-->
-    
+
+															
 </body>
+	
 </html>

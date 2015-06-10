@@ -28,17 +28,16 @@
     <link rel='stylesheet' href='/stylesheets/stylesheet.css' />
     <link rel='stylesheet' href='/stylesheets/opera.css' />
     <link rel='stylesheet' href='/stylesheets/mystyles.css' />
-    <style>
-
-      
+    <style>     
 		label{text-align:center;padding:5px 0px; font:bold 12px/20px arial,helvetica,sans-serif;}
 		.row-fluid{padding-bottom:6px;}
 		.modal-body{max-height:800px;}
 		.modal.fade{top:-100%;}
 		.span5{border: 1px solid rgb(215, 212, 212);margin-left:80px;margin-bottom:0px;}
-
-
-
+		#showServiceDialog3 .span4{border: 1px solid rgb(215, 212, 212);margin-left:50px !important;margin-bottom:0px;}
+		#showServiceDialog3 .span6{border: 1px solid rgb(215, 212, 212);margin-left:0px !important;margin-bottom:0px;}
+		#showServiceDialog3 .row-fluid{padding-bottom:0px;}
+		#showServiceDialog3 input{border:0px;text-align:center;}
         .tip-green {
             z-index:1000;
             text-align:left;    
@@ -46,8 +45,7 @@
             width:150px;    
             background-color:#ffffff;   
             font:bold 12px/14px arial,helvetica,sans-serif; 
-        }
-        
+        }      
         #bar img{float:left;margin-right:20px;margin-top:7px;}
         #bar p{float:left;font-size:28px; font-weight:900;margin-top:18px;margin-bottom:0px;}
     </style>
@@ -106,7 +104,7 @@
                         <div class="open"></div>
                         <ul>
                             <li><a href="/FileCheckManagement">文件完整性检查管理</a></li>
-                            <li><a href="/">查看文件完整性检查情况</a></li>
+                            <li><a href="/FileCheckResult">查看文件完整性检查情况</a></li>
                             <li><a href="/FileAlarmQuery">文件完整性报警查询</a></li>
                         </ul>
                     </li>
@@ -118,7 +116,7 @@
                             <li><a href="/DiskAlarmQuery">磁盘阵列报警查询</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="/" class="blorange">网管报警开关</a></li>
+                    <li class="active"><a href="/AlarmSwitch" class="blorange">网管报警开关</a></li>
                     <li class="active"><a href="/DeviceInfoQuery" class="blblue">设备信息查询</a></li>
                     <li class="active"><a href="/Telephone" class="blorange">常用电话</a></li>
                 </ul>
@@ -212,6 +210,259 @@
 			  <li id="item_9">重启设备</li>
 			</ul>
 	</div>
+	<!--编辑设备弹出框 begin-->
+    <div class="modal fade" id="addAndEditDeviceDialog" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加设备</h4>
+                </div>
+                <form id="add_form" method="post" action="addDevice">
+                    <div class="modal-body">
+                        <div class="row-fluid">
+                            <label class="span3">设备名称</label>
+                            <div class="span9">
+                                <input id="devicename" name="devicename" type="text"/>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">设备类型</label>
+                            <div class="span9">
+                                <select id="devicetype" name="devicetype">
+                                    <option value="">请选择</option>
+                                        <option value="信道检测卡">信道检测卡</option>
+                                        <option value="转码服务器">转码服务器</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">设备高度</label>
+                            <div class="span9">
+                                <select id="deviceheight" name="deviceheight">
+                                    <option value="">请选择</option>
+                                        <option value="16">16U</option>
+                                        <option value="15">15U</option>
+                                        <option value="14">14U</option>
+                                        <option value="13">13U</option>
+                                        <option value="12">12U</option>
+                                        <option value="11">11U</option>
+                                        <option value="10">10U</option>
+                                        <option value="9">9U</option>
+                                        <option value="8">8U</option>
+                                        <option value="7">7U</option>
+                                        <option value="6">6U</option>
+                                        <option value="5">5U</option>
+                                        <option value="4">4U</option>
+                                        <option value="3">3U</option>
+                                        <option value="2">2U</option>
+                                        <option value="1">1U</option> 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">所属子系统</label>
+                            <div class="span9">
+                                <select id="subsys" name="subsys">
+                                    <option value="">请选择</option>
+										<option value="1">频谱检测子系统</option>  
+										<option value="2">信道监测子系统</option>
+										<option value="3">解调子系统</option>	
+										<option value="4">码流监测子系统</option>
+										<option value="5">维护管理子系统</option>
+										<option value="6">音频检测子系统</option>
+										<option value="7">电话语音系统</option>
+										<option value="8">载波与信道干扰监测子系统</option>
+										<option value="9">节目内容监测子系统</option>
+										<option value="10">采集转码子系统</option>
+										<option value="11">码流录制子系统</option>
+										<option value="12">数据库子系统</option>
+										<option value="13">GPS网络校时子系统</option>
+										<option value="14">地面开路信号接收分配子系统</option>
+										<option value="15">业务与应用控制平台子系统</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">IP地址</label>
+                            <div class="span9">
+                                <input id="deviceIP1" name="deviceIP1" type="text"/>
+                                <input id="deviceIP2" name="deviceIP2" type="text"/>
+                                <input id="deviceIP3" name="deviceIP3" type="text"/>
+                                <input id="deviceIP4" name="deviceIP4" type="text"/>
+                                <input id="deviceIP5" name="deviceIP5" type="text"/>
+
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">所在机房</label>
+                            <div class="span9">
+                                <select id="deviceroom" name="deviceroom">
+                                    <option value="">请选择</option>
+                                        <option value="1">西侧机房</option>
+                                        <option value="2">南侧机房</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">所在机柜</label>
+                            <div class="span9">
+                                <select id="devicebox" name="devicebox">
+                                    <option value="">请选择</option>                                       
+										<option value="51">51号机柜</option>
+										<option value="50">50号机柜</option>
+										<option value="49">49号机柜</option>
+										<option value="48">48号机柜</option>
+										<option value="47">47号机柜</option>
+										<option value="46">46号机柜</option>
+										<option value="45">45号机柜</option>
+										<option value="44">44号机柜</option>
+										<option value="43">43号机柜</option>
+										<option value="42">42号机柜</option>
+										<option value="41">41号机柜</option>
+                                        <option value="40">40号机柜</option>
+                                        <option value="39">39号机柜</option>
+                                        <option value="38">38号机柜</option>
+                                        <option value="37">37号机柜</option>
+                                        <option value="36">36号机柜</option>
+                                        <option value="35">35号机柜</option>
+                                        <option value="34">34号机柜</option>
+                                        <option value="33">33号机柜</option>
+                                        <option value="32">32号机柜</option>
+                                        <option value="31">31号机柜</option>
+                                        <option value="30">30号机柜</option>
+                                        <option value="29">29号机柜</option>
+                                        <option value="28">28号机柜</option>
+                                        <option value="27">27号机柜</option>
+                                        <option value="26">26号机柜</option>
+                                        <option value="25">25号机柜</option>
+                                        <option value="24">24号机柜</option>
+                                        <option value="23">23号机柜</option>
+                                        <option value="22">22号机柜</option>
+                                        <option value="21">21号机柜</option>
+                                        <option value="20">20号机柜</option>
+                                        <option value="19">19号机柜</option>
+                                        <option value="18">18号机柜</option>
+                                        <option value="17">17号机柜</option>
+                                        <option value="16">16号机柜</option>
+                                        <option value="15">15号机柜</option>
+                                        <option value="14">14号机柜</option>
+                                        <option value="13">13号机柜</option>
+                                        <option value="12">12号机柜</option>
+                                        <option value="11">11号机柜</option>
+                                        <option value="10">10号机柜</option>
+                                        <option value="9">9号机柜</option>
+                                        <option value="8">8号机柜</option>
+                                        <option value="7">7号机柜</option>
+                                        <option value="6">6号机柜</option>
+                                        <option value="5">5号机柜</option>
+                                        <option value="4">4号机柜</option>
+                                        <option value="3">3号机柜</option>
+                                        <option value="2">2号机柜</option>
+                                        <option value="1">1号机柜</option>                                      
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">机柜位置</label>
+                            <div class="span9">
+                                <select id="boxlocation" name="boxlocation">
+                                    <option value="">请选择</option>
+                                        <option value="41">41U</option>
+                                        <option value="40">40U</option>
+                                        <option value="39">39U</option>
+                                        <option value="38">38U</option>
+                                        <option value="37">37U</option>
+                                        <option value="36">36U</option>
+                                        <option value="35">35U</option>
+                                        <option value="34">34U</option>
+                                        <option value="33">33U</option>
+                                        <option value="32">32U</option>
+                                        <option value="31">31U</option>
+                                        <option value="30">30U</option>
+                                        <option value="29">29U</option>
+                                        <option value="28">28U</option>
+                                        <option value="27">27U</option>
+                                        <option value="26">26U</option>
+                                        <option value="25">25U</option>
+                                        <option value="24">24U</option>
+                                        <option value="23">23U</option>
+                                        <option value="22">22U</option>
+                                        <option value="21">21U</option>
+                                        <option value="20">20U</option>
+                                        <option value="19">19U</option>
+                                        <option value="18">18U</option>
+                                        <option value="17">17U</option>
+                                        <option value="16">16U</option>
+                                        <option value="15">15U</option>
+                                        <option value="14">14U</option>
+                                        <option value="13">13U</option>
+                                        <option value="12">12U</option>
+                                        <option value="11">11U</option>
+                                        <option value="10">10U</option>
+                                        <option value="9">9U</option>
+                                        <option value="8">8U</option>
+                                        <option value="7">7U</option>
+                                        <option value="6">6U</option>
+                                        <option value="5">5U</option>
+                                        <option value="4">4U</option>
+                                        <option value="3">3U</option>
+                                        <option value="2">2U</option>
+                                        <option value="1">1U</option>
+                                        <option value="0">0U</option>                                        
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">卡位置</label>
+                            <div class="span9">
+                                <select id="cardlocation" name="cardlocation">
+                                    <option value="">请选择</option>
+                                        <option value="1">1卡槽</option>
+                                        <option value="2">2卡槽</option> 										
+                                        <option value="3">3卡槽</option>
+                                        <option value="4">4卡槽</option>
+                                        <option value="5">5卡槽</option>
+                                        <option value="6">6卡槽</option>
+                                        <option value="7">7卡槽</option>
+                                        <option value="8">8卡槽</option>
+                                        <option value="9">9卡槽</option>
+                                        <option value="10">10卡槽</option>
+                                        <option value="11">11卡槽</option>
+                                        <option value="12">12卡槽</option>
+                                        <option value="13">13卡槽</option>
+                                        <option value="14">14卡槽</option>
+                                        <option value="15">15卡槽</option>
+                                        <option value="16">16卡槽</option>                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">供应商</label>
+                            <div class="span9">
+                                <select id="provider" name="provider">
+                                    <option value="">请选择</option>
+                                        <option value="Bluetop">蓝拓扑</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <label class="span3">备注</label>
+                            <div class="span9">
+                                <textarea id="remark" name="remark"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">添加</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    <!--编辑设备弹出框 end-->
     <!--门限设置弹出框 start-->
 	<div class="modal fade" id="setThresholdDialog" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -508,14 +759,55 @@
                 </div>				
 				<div class="modal-body">
 					<div class="row-fluid">
-						<label class="span12 showip">IP:192.168.100.100</label>
+						<label class="span3 showip">IP:192.168.100.100</label>
 					</div>
 					<div class="row-fluid">
-						<label class="span12 showservice">***业务---信息***</label>
-					</div>													
+						<label class="span3 ">总数：10</label>
+					</div>
+					<div class="row-fluid">                       
+						<label class="span4">载波名称</label>
+						<label class="span6">解扰节目</label>					
+					</div>									
+					<div class="row-fluid">                       
+						<label class="span4">中兴6A</label>
+						<div class="span6">
+							<input  id="pingtimes1" name="pingtimes1" value="CCTV" type="text"/>
+						</div>				
+					</div>					
+					<div class="row-fluid">                       
+						<label class="span4">中兴6A</label>
+						<div class="span6">
+							<input  id="pingtimes1" name="pingtimes1" value="CCTV" type="text"/>
+						</div>				
+					</div>					
+					<div class="row-fluid">                       
+						<label class="span4">中兴6A</label>
+						<div class="span6">
+							<input  id="pingtimes1" name="pingtimes1" value="CCTV" type="text"/>
+						</div>				
+					</div>					
+					<div class="row-fluid">                       
+						<label class="span4">中兴6A</label>
+						<div class="span6">
+							<input  id="pingtimes1" name="pingtimes1" value="CCTV" type="text"/>
+						</div>				
+					</div>					
+					<div class="row-fluid">                       
+						<label class="span4">中兴6A</label>
+						<div class="span6">
+							<input  id="pingtimes1" name="pingtimes1" value="CCTV" type="text"/>
+						</div>				
+					</div>					
+					<div class="row-fluid">                       
+						<label class="span4">中兴6A</label>
+						<div class="span6">
+							<input  id="pingtimes1" name="pingtimes1" value="CCTV" type="text"/>
+						</div>				
+					</div>  																
 				</div>
 				<div class="modal-footer">                        
-					<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+					<button type="submit" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 				</div>           
             </div>
         </div>

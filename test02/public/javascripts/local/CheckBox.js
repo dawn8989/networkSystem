@@ -275,7 +275,8 @@ $(function(){
 				$( "#addDeviceDialog" ).dialog( "open" );
 			}, 
 			'item_2': function() {											
-				alert('编辑设备信息');
+				$('#addAndEditDeviceDialog h4').html("编辑设备信息");
+				$('#addAndEditDeviceDialog').modal('show');
 			}, 
 			'item_3': function() {															
 				scene.remove(currentDevice);
@@ -299,13 +300,21 @@ $(function(){
 					$('#showServiceDialog2 .showip').html("IP:"+currentDevice.Ip[0]);
 					$('#showServiceDialog2').modal('show');
 				}
+				if(currentDevice.type.indexOf("卫星接收机")>=0)
+				{
+					$('#showServiceDialog3 h4').html(currentDevice.type);
+					$('#showServiceDialog3 .showip').html("IP:"+currentDevice.Ip[0]);
+					$('#showServiceDialog3').modal('show');
+				}
 			}, 
 			'item_7': function() {											
-				alert('打开设备网管界面');
+				//alert('打开设备网管界面');
 				window.location.href = "http://localhost:6666";
 			}, 
 			'item_8': function() {											
-				alert('远程登录设备');
+				//alert('远程登录设备');
+				var oAppRunning = new ApplicationRunning();   
+				oAppRunning.Run("C:\\Windows\\notepad.exe");
 			}, 
 			'item_9': function() {											
 				alert('重启设备');
@@ -324,7 +333,37 @@ $(function(){
 			else 
 				return true;		
 		}
-	});			
+	});
+	function ApplicationRunning() {   
+	    this.Run = function (sPath) {
+	        if (navigator.userAgent.indexOf("MSIE") <= 0) {
+	            alert("此功能需使用IE浏览器!");
+	            return;
+	        }
+	        if (FileCheck(sPath, "程序[" + sPath + "]不存在,请检查!!")) {
+	            var oWsShell = new ActiveXObject("WScript.Shell");
+	            if (oWsShell)
+	                oWsShell.Run(sPath);
+	            oWsShell = null;
+	        }
+	    }
+	    function FileCheck(sPath, sNothingMessage) {
+	        try {
+	            var oFSO = new ActiveXObject("Scripting.FileSystemObject");
+	            if (!oFSO.FileExists(sPath)) {
+	                oFSO = null;
+	                if (sNothingMessage)
+	                    alert(sNothingMessage);
+	                return false;
+	            }
+	            return true;
+	        } catch (e) {
+	            var sErrorMessage = "命令已经被禁止!!请在IE[安全]中将此网站加入[受信任的站点]并在[自定义级别中]启用[对未标记为可安全执行脚本的ActiveX控件初始化并执行脚本]选项后刷新页面";	                               
+	            alert(sErrorMessage);
+	            return false;
+	        }
+	    }
+	}		
 //-----------------------------陈青云  end--------------------------
 });
 

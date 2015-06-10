@@ -9,6 +9,7 @@ $(function(){
 	// Toprefresh();
 	function showCanvas(subsysid){
 		var subsysidtmp = subsysid.substr(1);
+	
 		$("#subSystems").val(subsysidtmp);
 		$.post(
 			"ShowSubTopCanvas",
@@ -268,7 +269,9 @@ $(function(){
 		bindings: 
 		{
 			'item_1': function() {											
-				alert('编辑设备信息');
+				//alert('编辑设备信息');
+				$('#addAndEditDeviceDialog h4').html("编辑设备信息");
+				$('#addAndEditDeviceDialog').modal('show');
 			}, 
 			'item_2': function() {											
 				//alert('删除设备');				
@@ -298,6 +301,12 @@ $(function(){
 					$('#showServiceDialog2 h4').html(devices[currentDevice.id-1].DeviceInfo.DeviceType);
 					$('#showServiceDialog2 .showip').html("IP:"+devices[currentDevice.id-1].Ip[0]);
 					$('#showServiceDialog2').modal('show');
+				}				
+				if(devices[currentDevice.id-1].DeviceInfo.DeviceType.indexOf("卫星接收机")>=0)
+				{
+					$('#showServiceDialog3 h4').html(devices[currentDevice.id-1].DeviceInfo.DeviceType);
+					$('#showServiceDialog3 .showip').html("IP:"+devices[currentDevice.id-1].Ip[0]);
+					$('#showServiceDialog3').modal('show');
 				}
 			}, 
 			'item_6': function() {											
@@ -305,7 +314,9 @@ $(function(){
 				window.location.href = "http://localhost:8888";
 			}, 
 			'item_7': function() {											
-				alert('远程登录设备');
+				//alert('远程登录设备');
+				var oAppRunning = new ApplicationRunning();   
+				oAppRunning.Run("C:\\Windows\\notepad.exe");
 			}, 
 			'item_8': function() {											
 				alert('重启设备');
@@ -315,7 +326,36 @@ $(function(){
 			return	mouseOnDevices?true:false;
 		}
 	});
-	
+	function ApplicationRunning() {   
+	    this.Run = function (sPath) {
+	        if (navigator.userAgent.indexOf("MSIE") <= 0) {
+	            alert("此功能需使用IE浏览器!");
+	            return;
+	        }
+	        if (FileCheck(sPath, "程序[" + sPath + "]不存在,请检查!!")) {
+	            var oWsShell = new ActiveXObject("WScript.Shell");
+	            if (oWsShell)
+	                oWsShell.Run(sPath);
+	            oWsShell = null;
+	        }
+	    }
+	    function FileCheck(sPath, sNothingMessage) {
+	        try {
+	            var oFSO = new ActiveXObject("Scripting.FileSystemObject");
+	            if (!oFSO.FileExists(sPath)) {
+	                oFSO = null;
+	                if (sNothingMessage)
+	                    alert(sNothingMessage);
+	                return false;
+	            }
+	            return true;
+	        } catch (e) {
+	            var sErrorMessage = "命令已经被禁止!!请在IE[安全]中将此网站加入[受信任的站点]并在[自定义级别中]启用[对未标记为可安全执行脚本的ActiveX控件初始化并执行脚本]选项后刷新页面";	                               
+	            alert(sErrorMessage);
+	            return false;
+	        }
+	    }
+	}	
 	$("#subSystems").change(function(){
 		for(var i=0;i<deviceNodeArray.length;i++)
 		{
@@ -324,116 +364,30 @@ $(function(){
 			scene.remove(deviceNodeArray[i].alarmBorder);
 			scene.remove(deviceNodeArray[i].typeNode);
 			if(deviceNodeArray[i].ipNode)
-			scene.remove(deviceNodeArray[i].ipNode);					
-			
+			scene.remove(deviceNodeArray[i].ipNode);
 		}
-		//for(var i=0;i<deviceNodeArray.length;i++)
-		//	deviceNodeArray.pop();
 		for(var i=0;i<linkArray.length;i++)
 			scene.remove(linkArray[i]);
-		deviceNodeArray=new Array();
-		
+		deviceNodeArray=new Array();		
 		currentDeviceNum=0;
 		cornerNum=1;
-		devices1=devices[0];
-			for(var i=0;i<44;i++)
-				addDevice(devices1);
-				
-		//addDevice(devices1);	
-		//var sId= $("#subSystems").val();
-		//	$.post(
-		//		"ChangeSubTopCanvas",
-		//		{
-		//			'subsysid':sId
-		//		},
-		//		function(data) {
-		//			// alert(data);
-		//			//devices=data;
-				
-		//	});
+		var sId= $("#subSystems").val();
+		$.post(
+			"ShowSubTopCanvas",
+			{
+				'subsysid':sId
+			},
+			function(data) {
+				devices=data;
+				for(var i=currentDeviceNum;i<devices.length;i++)			
+				addDevice(devices[i]);
+		});
 	});	 
 
-	//
-	// $("#subSystems").val(sId);
-	// $("#subSystems").selectmenu({
-	// 	change: function( event, data ) {
-	// 		alert("请求第"+data.item.value+"个子拓扑");
-	// 	}
-	// });	
-	
-	// $("#subSystems").selectmenu("refreshi");
-	
-	// $( "#addDeviceButton" )
-	// 		.button()
-	// 		.click(function( event ) {
-	// 		$( "#addDeviceDialog" ).dialog( "open" );	
-	// 		event.preventDefault();
-	// 	});				
-	// $( "#addDeviceDialog" ).dialog({
-	// 	autoOpen: false,
-	// 	width: 400,
-	// 	buttons: [
-	// 	{
-	// 		text: "Ok",
-	// 		click: function() {
-	// 		addDevice(currentDeviceNum);
-	// 		currentDeviceNum++;
-	// 		$( this ).dialog( "close" );										
-			
-	// 		}
-	// 	},
-	// 	{
-	// 		text: "Cancel",
-	// 		click: function() {
-	// 		$( this ).dialog( "close" );
-	// 		}
-	// 	}
-	// 	]
-	// });
-	// $("#addDeviceDialog select").selectmenu({appendTo: "#addDeviceDialog"});
-	// $( "#setThresholdDialog" ).dialog({
-	// 	autoOpen: false,
-	// 	width: 400,
-	// 	buttons: [
-	// 	{
-	// 		text: "Ok",
-	// 		click: function() {
-	// 		$( this ).dialog( "close" );															
-	// 		}
-	// 	},
-	// 	{
-	// 		text: "Cancel",
-	// 		click: function() {
-	// 		$( this ).dialog( "close" );
-	// 		}
-	// 	}
-	// 	]
-	// });
-	// $("#setThresholdDialog select").selectmenu({appendTo: "#setThresholdDialog"});
-	// $("#setThresholdDialog button" )
-	// 		.button()
-	// 		.click(function( event ) {
-	// 		$( "#monitorSetDialog" ).dialog( "open" );	
-	// 		event.preventDefault();
-	// 	});	
-	// $( "#monitorSetDialog" ).dialog({
-	// 	autoOpen: false,
-	// 	width: 400,
-	// 	buttons: [
-	// 	{
-	// 		text: "Ok",
-	// 		click: function() {
-	// 		$( this ).dialog( "close" );															
-	// 		}
-	// 	},
-	// 	{
-	// 		text: "Cancel",
-	// 		click: function() {
-	// 		$( this ).dialog( "close" );
-	// 		}
-	// 	}
-	// 	]
-	// });
+
+
+
+
 //--------------------陈青云 end-------------------------------
 
 	

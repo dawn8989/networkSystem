@@ -177,7 +177,7 @@
                         <div class="open"></div>
                         <ul>
                             <li><a href="/FileCheckManagement">文件完整性检查管理</a></li>
-                            <li><a href="/">查看文件完整性检查情况</a></li>
+                            <li><a href="/FileCheckResult">查看文件完整性检查情况</a></li>
                             <li><a href="/FileAlarmQuery">文件完整性报警查询</a></li>
                         </ul>
                     </li>
@@ -189,7 +189,7 @@
                             <li><a href="/DiskAlarmQuery">磁盘阵列报警查询</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="/" class="blorange">网管报警开关</a></li>
+                    <li class="active"><a href="/AlarmSwitch" class="blorange">网管报警开关</a></li>
                     <li class="active"><a href="/DeviceInfoQuery" class="blblue">设备信息查询</a></li>
                     <li class="active"><a href="/Telephone" class="blorange">常用电话</a></li>
                 </ul>
@@ -213,51 +213,86 @@
                 </div>
 
                 <!--任务canvas begin-->
-                <div id="diskcheck">
-                    <div id="twobutton" style="height: 350px;">
+				<div class="row-fluid">                
+                    <div id="twobutton" style="height: 350px;overflow-y: scroll; clear: right;" class="data-fluid">
                         <button type="button" class="btn btn-info pull-right">刷新</button>
                         <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">磁盘阵列管理</button>
-						<div id="diskcheckDiv" class="progress" style="margin-top: 33px;"></div>
+
+							<table  id="filecheckdiv" class="table" width="100%">
+								
+							</table>						
 						<script>
-						  $(function () {
-						  
-							function addBar(barClass,ratio,tip){
+						  $(function () {						  
+							function addBar(barClass,ratio,tip,center){
 								var div=document.createElement("div");
 								div.setAttribute("class",barClass);
-								div.setAttribute("style","width:"+ratio+"%");
 								if(tip)
-									{
-										div.setAttribute("data-toggle","tooltip");
-										div.setAttribute("title",tip);
-									}
-								document.getElementById("diskcheckDiv").appendChild(div);
+								div.innerHTML=tip;
+								if(center)
+								div.setAttribute("style","width:"+ratio+"%;");
+								else
+								div.setAttribute("style","width:"+ratio+"%;text-align:right");								
+								return div;
 							}
-							function draw(usage,threshold,total)
-							{
-								if(usage<=threshold){
-									addBar("bar bar-success",usage/total*100);
-									addBar("bar bar-success tooltip-show",0.001,usage+"T");
-									addBar("bar bar-warning",(threshold-usage)/total*100);
-									addBar("bar bar-danger tooltip-show",0.001,threshold+"T");
-									addBar("bar bar-warning",(total-threshold)/total*100);
+							function draw(fatherdiv,usage,threshold,total)
+							{								
+								if(usage<=threshold){																									
+									fatherdiv.appendChild(addBar("bar bar-success ",usage/total*100,"已用"+usage+"T",true));									
+									fatherdiv.appendChild(addBar("bar bar-warning",(threshold-usage)/total*100));									
+									fatherdiv.appendChild(addBar("bar bar-warning",(total-threshold)/total*100,total+"T"));
 								}
-								else{
-									addBar("bar bar-danger",threshold/total*100);
-									addBar("bar bar-danger tooltip-show",0.001,threshold+"T");
-									addBar("bar bar-danger",(usage-threshold)/total*100);
-									addBar("bar bar-success tooltip-show",0.001,usage+"T");
-									addBar("bar bar-warning",(total-usage)/total*100);
-								}
-								addBar("bar bar-danger tooltip-show",0.001,total+"T");
+								else{								
+									fatherdiv.appendChild(addBar("bar bar-danger",threshold/total*100,"已用"+usage+"T",true));																											
+									fatherdiv.appendChild(addBar("bar bar-danger",(usage-threshold)/total*100));									
+									fatherdiv.appendChild(addBar("bar bar-warning",(total-usage)/total*100,total+"T"));
+								}								
 							}
-							draw(2,3,5);
-							$('.tooltip-show').tooltip('show');
-							
+							function addFileCheckResult(rootDiv,path,usage,threshold,total){
+								var tr=document.createElement("tr");
+								var td=document.createElement("td");
+								td.setAttribute("width","9%");								
+								td.innerHTML=path;							
+								tr.appendChild(td);								
+								td=document.createElement("td");
+								td.setAttribute("width","1%");								
+								var span=document.createElement("span");
+								var x=rootDiv.offsetWidth*0.8*threshold/total;
+								span.setAttribute("style","position:relative;left:"+x+"px;top:-18px;");
+								span.innerHTML=threshold+"T";
+								td.appendChild(span);
+								tr.appendChild(td);								
+								td=document.createElement("td");
+								td.setAttribute("width","80%");
+								td.setAttribute("class","progress");
+								td.setAttribute("style","border:0px");
+								draw(td,usage,threshold,total);								
+								tr.appendChild(td);								
+								td=document.createElement("td");
+								td.setAttribute("width","10%");																
+								td.innerHTML=(total-usage).toFixed(2)+"T可用  共"+total+"T";								
+								tr.appendChild(td);
+								rootDiv.appendChild(tr);
+							}														
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",4.2,4,5.0);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",7,8,9);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",3,4,5);
+							addFileCheckResult(document.getElementById("filecheckdiv"),"\\111.111.111.111\\ss",11,10,12);
 						  });
 									
 									 
 						</script>
                 </div>
+ 
+				
                 <!--任务canvas end-->
 
                 <!--报警列表 begin-->
