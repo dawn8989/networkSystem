@@ -7,8 +7,10 @@ var fs = require('fs');
 // var obj2string01 = require('./lib/obj2string01')
 
 //数组：设备列表
+//无数据库，内存存储版本用到的数组对象
 var DeviceList = require('../modules/DeviceList');
 //数组：报警列表
+//数组时代的报警列表
 var AlarmList = require('../modules/AlarmList');
 //Map对象：单个IP地址与设备列表DeviceList之间的映射
 var IPTable = require('../modules/IPTable');
@@ -16,18 +18,26 @@ var IPTable = require('../modules/IPTable');
 var SubSystemList = require('../modules/SubSystemList');
 //计数器：用来判断某IP是否已经10次ping不通
 
-//加一条假报警，保证AlarmList不为空
-// var ala;
-// ala = {
-// 	DeviceName:"zhuanma_1",
-// 	SubSys:"zhuanma",
-// 	DeviceType:'转码服务器',
-// 	StartTime:"2015-05-13 14:00:00",
-// 	EndTime:"2015-05-13 14:00:10",
-// 	Status:"False",
-// 	Source:["172.0.0.1", "CpuUsage", "80"]
-// }
-// AlarmList.push(ala);
+//以下是mongodb数据库用到的
+var Col = require('../mongodb/Col');
+var Crud = require('../mongodb/Crud');
+/* 
+数据库中查询的id要通过 new ObjectId(id) 进行实例化以后的id, 你单单传一个字符串id是一点用都没有的
+*/
+var ObjectID = require('mongodb').ObjectID;
+
+//初始化crud
+var crud;
+//新建db并获取
+var db = new Col("NetMonitor", function(db){
+	//数据库连接完毕...
+    //创建一个RESTFUL对象;
+    crud = new Crud(db, function(){});
+});
+
+//设置一个全局的报警监控项数组alarmItem，每次来一条xml时把该数组清零
+var alarmItem = new Array();
+
 //数组：IP及设备信息列表，该数组中每个IP及IP所在的设备信息是一个数组元素
 var IPSourceList = new Array();
 //报警ID:全局变量
@@ -82,69 +92,21 @@ exports.xml = function(req, res, next){
 //这里的设备基本信息、网络连接状态、接收机锁定状态等xml全部自己造假
 exports.saveDevice = function(req, res, next){
 	//---------------------------start  伪造设备基本信息xml，解析并存DeviceList数组，IPSourceList数组，判断报警，并存AlarmList数组
-	// var tmp = obj2str(req.body);
- //    var result = tmp.substring(39, tmp.length-1);
- //    var xmlDoc = libxmljs.parseXml(result);
-	// var MsgType = xmlDoc.get('//MsgType').text();
-	if(AlarmList.length > 10000){
+	//控制内存报警数组AlarmList数目在10万条范围之内
+	if(AlarmList.length > 100000){
 		AlarmList.splice(0, 500);
 	}
+	//清空报警监控项数组alarmItem
+	alarmItem.length = 0;
 	var tmp = obj2str(req.body);
 	var result = tmp.substring(39, tmp.length-1);
 	// console.log(result);
 	var xmlDoc02 = libxmljs.parseXml(result);
-	// var test02 = '<Msg>'+
-	// 				'<Head>'+
-	// 					'<Version>1</Version>'+
-	// 					'<Date>2014-08-06</Date>'+
-	// 					'<Time>16:21:30</Time>'+
-	// 					'<MsgType>SendSysInfo</MsgType>'+
-	// 				'</Head>'+
-	// 				'<Type>jieshouji</Type>'+
-	// 				'<SysInfo>'+
-	// 					'<CpuTemp>50</CpuTemp>'+
-	// 					'<HwTemp>45</HwTemp>'+
-	// 					'<FanRpm>1700</FanRpm>'+
-	// 					'<CpuUsage>30</CpuUsage>'+
-	// 					'<MemUsage>340</MemUsage>'+
-	// 					'<Network>'+
-	// 						'<IP>192.168.0.1</IP>'+
-	// 						'<Usage>30%</Usage>'+
-	// 					'</Network>'+
-	// 					'<Network>'+
-	// 						'<IP>192.168.0.2</IP>'+
-	// 						'<Usage>40%</Usage>'+
-	// 					'</Network>'+
-	// 					'<Network>'+
-	// 						'<IP>192.168.0.222</IP>'+
-	// 						'<Usage>50%</Usage>'+
-	// 					'</Network>'+
-	// 					'<Process>'+
-	// 						'<Name>QQ.exe</Name>'+
-	// 						'<ThreadNum>100</ThreadNum>'+
-	// 						'<HandleNum>100</HandleNum>'+
-	// 						'<IORead>100</IORead>'+
-	// 						'<IOWrite>100</IOWrite>'+
-	// 						'<IOReadByte>100</IOReadByte>'+
-	// 						'<IOWriteByte>100</IOWriteByte>'+
-	// 					'</Process>'+
-	// 					'<Process>'+
-	// 						'<Name>QQ.exe</Name>'+
-	// 						'<ThreadNum>88</ThreadNum>'+
-	// 						'<HandleNum>99</HandleNum>'+
-	// 						'<IORead>88</IORead>'+
-	// 						'<IOWrite>99</IOWrite>'+
-	// 						'<IOReadByte>101</IOReadByte>'+
-	// 						'<IOWriteByte>102</IOWriteByte>'+
-	// 					'</Process>'+
-	// 				'</SysInfo>'+
-	// 			'</Msg>';
-	// var xmlDoc02 = libxmljs.parseXml(test02);
 	var MsgType = xmlDoc02.get('//MsgType').text();
+
+	//----------------------------start SysInfo
 	if(MsgType === "SendSysInfo"){
 		var Id = 1;
-		//子系统SubSys
-	  	// var SubSys =  xmlDoc02.get('//Type').text(); 
 	  	var SubSys = xmlDoc02.get('//SubSystem').text();
 		//时间
 	  	var Time = xmlDoc02.get('//Date').text() +' '+ xmlDoc02.get('//Time').text();
@@ -163,8 +125,6 @@ exports.saveDevice = function(req, res, next){
 	  	//设备基本信息
 	  	var DeviceStatus = {
   			CpuTemp:xmlDoc02.get('//CpuTemp').text(),
-  			// HwTemp:xmlDoc02.get('//HwTemp').text(),
-  			// FanRpm:xmlDoc02.get('//FanRpm').text(),
   			CpuUsage:xmlDoc02.get('//CpuUsage').text(),
   			MemUsage:xmlDoc02.get('//MemUsage').text()
   		}
@@ -189,64 +149,16 @@ exports.saveDevice = function(req, res, next){
 	  		}
 	  		AppArr.push(App);
 	  	}
-	  	//获取该Type设备的当前数量
-	  	var TypeNum = 0;
-	  	for(var i=0; i<DeviceList.length; i++){
-	  		if(DeviceList[i].SubSys == SubSys.toString() && (DeviceList[i].Ip != IpArr)){
-	  			TypeNum ++;
-	  		}
-	  	}
-	  	//在子系统中的Id,因为是新设备，所以Id在原有Type个数的基础上加1
-	  	Id = TypeNum + 1;
-	  	//设备Name
-	  	var Name = SubSys + '_' + Id.toString();
-	  	var device02 = {
-		  		Name:Name.toString(),
-		  		SubSys:SubSys.toString(),
-		  		Id:Id,
-		  		Time:Time.toString(),
-		  		Ip:IpArr,
-		  		NetUsage:UsageArr,
-		  		DeviceStatus:DeviceStatus,
-		  		AppModules:AppArr
-	  		};
-	  	//遍历DeviceList数组，监测是否该设备已存在
-	  	var flagDev = false;//用来标记DeviceList数组中是否已经存过此设备
-		for(var i=0; i<DeviceList.length; i++){
-			if(DeviceList[i].Ip != undefined){
-				var iscontain = checkStrInArray(IpArr[0], DeviceList[i].Ip);
-				if(iscontain){
-					//如果该设备已经在数组中出现，则更新该数组元素的属性值
-					flagDev = true;
-					DeviceList[i].Time = Time.toString();
-					DeviceList[i].NetUsage = UsageArr;
-					DeviceList[i].DeviceStatus = DeviceStatus;
-					DeviceList[i].AppModules = AppArr;
-					//把所有的监控项判断报警都写到一个方法中去，在这儿调用
-					AlarmJudge(DeviceList[i], IpArr);
-					break;
-				}
-			}
-		}
-		if(flagDev == false){
-			/* 如果该设备未存入过数组,则构造一个device01元素，push进数组 */
-			DeviceList.push(device02);
-			//调用saveIPSource往IPSourceList数组中存IP及设备信息
-			saveIPSourceDevice(IpArr, device02);
-		}
-		if(DeviceList.length == 0){
-			//初始化，DeviceList中空无一物时
-		  	DeviceList.push(device02);
-		  	saveIPSourceDevice(IpArr, device02);
-		}
+	  	//先判断报警，存devicealarm库，然后把设备性能数据和报警状态、报警项一并更新到device库
+	  	AppArr = AlarmJudge(IPchild[0].text(), UsageArr, DeviceStatus, AppArr, Time);
+		//数据库device表中更新该document的属性值
+		crud.update("device", {Ip:IPchild[0].text()}, {Time:Time.toString(), NetUsage:UsageArr, DeviceStatus:DeviceStatus, AppModules:AppArr}, function(){
+			//把所有的监控项判断报警都写到一个方法中去，在这儿调用
+			console.log("updated successfully.");
+		});
 		
 	}
-	
-	//----------------------------end   伪造设备基本信息xml，解析并存DeviceList数组，IPSourceList数组，判断报警，并存AlarmList数组
-
-
-	
-	
+	//----------------------------end SysInfo  
 
 	// ----------------------------start   伪造接收机锁定状态信息xml，解析并存DeviceList数组，IPSourceList数组，判断报警，并存AlarmList数组
 	// var test03 = '<Msg>'+
@@ -379,7 +291,7 @@ exports.saveDevice = function(req, res, next){
 	if(MsgType.toString() === 'NetStatusReport'){
 		//新建一个计数器
 		var count = 0;
-		console.log(result);
+		// console.log(result);
 		//设置一个初始Id
 		var Id = 1;
 		var Ip = xmlDoc02.get('//DeviceIp').text();
@@ -518,190 +430,80 @@ exports.saveDevice = function(req, res, next){
 	//----------------------------end   伪造SNMP的xml，解析并存DeviceList数组，IPSourceList数组，判断报警，并存AlarmList数组
 	// console.log(DeviceList);
 	// console.log(IPTable);
-	// console.log(AlarmList);
+	console.log(AlarmList);
 	res.json("success");
 }
 
-
-function AlarmJudge(device, IpArr){
+function AlarmJudge(ip, netusage, devicestatus, appstatus, time){
 	//--------------------start 判断设备基本信息的报警状态，并存入AlarmList数组-------------
-	//这三种报警没条报警对应一个设备，故可能有多个IP地址
-
-	var flagA = false;//用来标记报警列表中是否存在该设备&&该报警类型的报警
-	var flagD = false;//用来标记此条xml中，要监控的项目中是否有项目符合报警条件
-	flagD = AlarmJudgeDevice(device, "CpuUsage", flagA, flagD);
-	flagA = false;
-	flagD = AlarmJudgeDevice(device, "MemUsage", flagA, flagD);
-	flagA = false;
-	flagD = AlarmJudgeDevice(device, "CpuTemp", flagA, flagD);
-
+	//这三种报警每条报警对应一个设备，故可能有多个IP地址
+	var device;
+	// for(var i=0; i<DeviceList.length; i++){
+	for(var i=DeviceList.length; i>0; i--){
+		console.log(DeviceList[i]);
+		if(DeviceList[i].Ip != undefined){
+			var iscontain = checkStrInArray(ip, DeviceList[i].Ip);
+			if(iscontain){
+				//如果该设备已经在数组中出现，则更新该数组元素的属性值
+				device = DeviceList[i];
+				break;
+			}
+		}
+	}
+	// var flagD = false;//用来标记此条xml中，要监控的项目中是否有项目符合报警条件
+	AlarmJudgeDevice(device, "CpuUsage", devicestatus, time);
+	AlarmJudgeDevice(device, "MemUsage", devicestatus, time);
+	AlarmJudgeDevice(device, "CpuTemp", devicestatus, time);
 	//比较 特殊的网络使用率的报警判断 start------------
 	//需要把此设备的所有网口利用率都判断一遍，每条报警只对应一个IP地址
-	for(var h=0; h < IpArr.length; h ++){
-		flagA = false;
-		flagD = AlarmJudgeNetUsage(IpArr[h].toString(), h, "NetUsage", flagA, flagD);
+	for(var h=0; h < device.Ip.length; h ++){
+		AlarmJudgeNetUsage(device, h, "NetUsage", netusage, time);
 	}
 	//比较 特殊的网络使用率的报警判断 end--------------
-
 	//判断设备上进程相关监控项的报警，对于监控多个进程的，每个进程都要判断一次------
 	for(var h=0; h < device.AppModules.length; h++){
 		var flagAPP = false;
-		flagA = false;
-		var Flag;
-		Flag = AlarmJudgeModuleB(device, "ThreadNum", h, flagA, flagD, flagAPP);//B方法是判断>时报警
-		flagD = Flag[0];
-		flagAPP = Flag[1];
-		flagA = false;
-		Flag = AlarmJudgeModuleB(device, "HandleNum", h, flagA, flagD, flagAPP);
-		flagD = Flag[0];
-		flagAPP = Flag[1];
-		flagA = false;
-		Flag = AlarmJudgeModuleL(device, "IOReadByte", h, flagA, flagD, flagAPP);//L方法是判断<时报警
-		flagD = Flag[0];
-		flagAPP = Flag[1];
-		flagA = false;
-		Flag = AlarmJudgeModuleL(device, "IOWriteByte", h, flagA, flagD, flagAPP);
-		flagD = Flag[0];
-		flagAPP = Flag[1];
+		flagAPP = AlarmJudgeModuleB(device, "ThreadNum", appstatus, h, flagAPP, time);//B方法是判断>时报警
+		flagAPP = AlarmJudgeModuleB(device, "HandleNum", appstatus, h, flagAPP, time);
+		flagAPP = AlarmJudgeModuleL(device, "IOReadByte", appstatus, h, flagAPP, time);//L方法是判断<时报警
+		flagAPP = AlarmJudgeModuleL(device, "IOWriteByte", appstatus, h, flagAPP, time);
 		if(flagAPP == true){
-			device.AppModules[h].AlarmStatus = "ON";
+			appstatus[h].AlarmStatus = "ON";
 		}else{
-			device.AppModules[h].AlarmStatus = "OFF";
+			appstatus[h].AlarmStatus = "OFF";
 		}
 	}
-
-	//对设备和子系统的报警状态进行更新
-	if(flagD == true){
-		device.AlarmStatus = "ON";
-	}else{
-		device.AlarmStatus = "OFF";
-	}
-	// for(var k=0; k < SubSystemList.length; k ++){
-	// 	if(SubSystemList[k].SubSysName == device.SubSys){
-	// 		if(flagD == true){
-	// 			device.AlarmStatus = "ON";
-	// 			SubSystemList[k].AlarmNum = SubSystemList[k].AlarmNum + 1;
-	// 		}else{
-	// 			device.AlarmStatus = "OFF";
-	// 			if(SubSystemList[k].AlarmNum != 0){
-	// 				SubSystemList[k].AlarmNum = SubSystemList[k].AlarmNum + 1;
-	// 			}
-	// 		}
-	// 		break;
-	// 	}
-	// }
-	
-	//判断设备上进程相关监控项的报警，对于监控多个进程的，每个进程都要判断一次------
-
 	//--------------------end 判断设备基本信息的报警状态，并存入AlarmList数组-------------
-}
-
-//遍历IPSourceList数组，监测该IP所在的设备信息是否已存在
-function saveIPSourceDevice(iparr, device){
-	
-	for(var x=0; x < iparr.length; x ++){
-		//对该xml传来的ip地址遍历
-		// for(var j=0; j < IPTable.elements.length; j ++){
-		// 	if(IPTable.elements[j].key == iparr[x]){
-		// 		//如果IP数组中已经存在该IP地址
-		// 		var index = IPTable[iparr[x].toString()];//得到该IP对应的device在数组DeviceList中的序号
-		// 		var device = DeviceList[index];
-		// 		device.NetUsage = 
-		// 	}
-		// }
-		var ipStr = iparr[x].toString();
-		var index = IPTable[ipStr];
-		if(index === undefined){
-			//如果IPTable中还不存在ip1,那么，加进去
-			IPTable[ipStr] = DeviceList.length-1;
-		}
-	}
-}
-
-//遍历IPSourceList数组，监测该IP所在的设备信息是否已存在
-function saveIPSourceSingle(ip, device, flag, isContain){
-	for(var j=0; j < IPSourceList.length; j ++){
-		if(IPSourceList[j].Ip == ip){
-			//如果IP数组中已经存在该IP地址
-			IPSourceList[j].Source.Time = device.Time.toString();
-			if(isContain == false){//这种情况是Id和Name都改变的情况
-				IPSourceList[j].Source.Id = device.Id;
-				IPSourceList[j].Source.Name = device.Name.toString();
-			}
-			IPSourceList[j].Source.NetStatus = device.NetStatus.toString();
-			IPSourceList[j].Source.Count = device.Count;
-			flag = true;
-			break;
-		}
-	}
-	if(flag == false){
-		//如果IP数组总还没有该IP地址
-		//来个device的中间量
-		var deviceTmp = {
-			Name:device.Name.toString(),
-			SubSys:device.SubSys.toString(),
-			Id:device.Id,
-			Time:device.Time.toString(),
-			Ip:device.Ip,
-			NetStatus:device.NetStatus
-		};
-		var IPSource = {
-				Ip:ip.toString(),
-				Source:deviceTmp
-			}
-		IPSource.Source.Ip = ip.toString();
-		IPSource.Source.NetStatus = device.NetStatus.toString();
-		IPSourceList.push(IPSource);
-	}
-	if(IPSourceList.length == 0){
-		var deviceTmp = {
-			Name:device.Name.toString(),
-			SubSys:device.SubSys.toString(),
-			Id:device.Id,
-			Time:device.Time.toString(),
-			Ip:device.Ip,
-			NetStatus:device.NetStatus
-		};
-		var IPSource = {
-				Ip:ip.toString(),
-				Source:deviceTmp
-			}
-		IPSource.Source.Ip = ip.toString();
-		IPSource.Source.NetStatus = device.NetStatus.toString();
-		IPSourceList.push(IPSource);
-	}
-}
-
-//针对于接收机，遍历IPSourceList数组，监测该IP所在的设备信息是否已存在，如果存在，更新端口号及锁定状态
-function saveIPSourceLock(ip, device, flag, portnumber){
-	var index = IPTable[ip];
-	var device = DeviceList[index];
+	return appstatus;
 }
 
 //判断设备报警监控项，并存入AlarmList数组，这里报警门限暂时使用初始化门限ThresHold数组
-function AlarmJudgeDevice(device, alarmtype, flag, flagD){
+function AlarmJudgeDevice(device, alarmtype, devicestatus, time){
+	var flag = false;
 	//遍历整个报警数组，从后往前，针对设备基本信息报警
 	for(var i=AlarmList.length-1; i != -1; i --){
-		var iscontain = checkStrInArray(AlarmList[i].Source[0], device.Ip);
-		if(iscontain && (AlarmList[i].Source[1] == alarmtype)){//报警列表中已存在
+		var iscontain = checkStrInArray(AlarmList[i].Ip[0], device.Ip);
+		if(iscontain && (AlarmList[i].AlarmType == alarmtype)){//报警列表中已存在
 			flag = true;
 			if(AlarmList[i].Status == "True"){//此条报警为“正在报警”状态
-				if(parseInt(device.DeviceStatus[alarmtype]) < device.ThresHold[alarmtype]){////此刻CpuUsage恢复正常数值
+				if(parseInt(devicestatus.alarmtype) < device.ThresHold[alarmtype]){//如果实际报警结束
+					//首先更新报警数组
 					AlarmList[i].Status = "False";//让报警状态为不报警
-					AlarmList[i].endTime = device.Time.toString();//更新报警结束时间
-					JudgeAlarmItemR(device, alarmtype);
-				}else{
-					flagD = true;
-					JudgeAlarmItem(device, alarmtype);
+					AlarmList[i].endTime = time.toString();//更新报警结束时间
+					AlarmList[i].AlarmValue = devicestatus.alarmtype.toString();//更新当前实际值
+					//插入这条报警结束的alarm
+					crud.insert("devicealarm", AlarmList[i], function(){});
+				}else{//如果实际报警持续
+					AlarmList[i].AlarmValue = devicestatus.alarmtype.toString();//更新当前实际值
+					//将该报警监控项加入到数组alarmItem中去
+					alarmItem.push(alarmtype);
 				}
-				AlarmList[i].Source[2] = device.DeviceStatus[alarmtype].toString();//如果此刻CpuUsage过高，则只需要更新报警实时数值
 			}else{//此条报警为“已经报警结束”状态
-				if(parseInt(device.DeviceStatus[alarmtype]) > device.ThresHold[alarmtype]){//此刻CpuUsage值过高，则加入一条新的报警信息
-					alarmForDevice(device, alarmtype);
-					flagD = true;
-					JudgeAlarmItem(device, alarmtype);
-				}else{
-					JudgeAlarmItemR(device, alarmtype);
+				if(parseInt(devicestatus.alarmtype) > device.ThresHold[alarmtype]){//此刻CpuUsage值过高，则加入一条新的报警信息
+					//报警数组中插入一条新的报警
+					alarmForDevice(device, alarmtype, devicestatus, time);
+					//将该报警监控项加入到数组alarmItem中去
+					alarmItem.push(alarmtype);
 				}
 			}
 			break;
@@ -709,84 +511,73 @@ function AlarmJudgeDevice(device, alarmtype, flag, flagD){
 	}
 	//flag = false:如果报警列表中不存在这个设备的该监控项的基本信息报警
 	if(flag == false){
-		if(parseInt(device.DeviceStatus[alarmtype]) > device.ThresHold[alarmtype]){
-			alarmForDevice(device, alarmtype);
-			flagD = true;
-			JudgeAlarmItem(device, alarmtype);
-		}else{
-			JudgeAlarmItemR(device, alarmtype);
+		if(parseInt(devicestatus.alarmtype) > device.ThresHold[alarmtype]){
+			alarmForDevice(device, alarmtype, devicestatus, time);
+			//将该报警监控项加入到数组alarmItem中去
+			alarmItem.push(alarmtype);
 		}
 	}
-	return flagD;
 }
 
 //判断设备IP的使用率，并存入AlarmList数组，这里报警门限暂时使用初始化门限ThresHold数组
-function AlarmJudgeNetUsage(ip, x, alarmtype, flag, flagD){
-	//但是这里可能会有隐患，就是IPSourceList中还没有把所有IP及相关信息存储进去，那么会导致用ip去遍历IPSourceList却找不到ip
-	var source;
-	var index = IPTable[ip];
-	source = DeviceList[index];
-	//下面根据报警门限做报警判断，并存储报警数组AlarmList
-	//遍历整个报警数组，从后往前，针对设备基本信息报警中的网口利用率报警，此种报警一个IP地址对应一条
+function AlarmJudgeNetUsage(device, x, alarmtype, netusage, time){
+	var flag = false;
+	//遍历整个报警数组，从后往前，针对设备基本信息报警
 	for(var i=AlarmList.length-1; i != -1; i --){
-		if(ip == AlarmList[i].Source[0] && (AlarmList[i].Source[1] == alarmtype)){//报警列表中已存在
+		var iscontain = checkStrInArray(AlarmList[i].Ip[0], device.Ip);
+		if(iscontain && (AlarmList[i].AlarmType == alarmtype)){//报警列表中已存在
 			flag = true;
 			if(AlarmList[i].Status == "True"){//此条报警为“正在报警”状态
-				if(parseInt(source[alarmtype][x]) < source.ThresHold[alarmtype]){////此刻网络利用率恢复正常数值
+				if(parseInt(netusage[x]) < device.ThresHold[alarmtype]){////此刻CpuUsage恢复正常数值
 					AlarmList[i].Status = "False";//让报警状态为不报警
-					AlarmList[i].endTime = source.Time.toString();//更新报警结束时间
-					JudgeAlarmItemR(source, alarmtype);
-				}else{
-					AlarmList[i].Source[2] = source[alarmtype][x].toString();//如果此刻网络利用率过高，则只需要更新报警实时数值
-					flagD = true;
-					JudgeAlarmItem(source, alarmtype);
+					AlarmList[i].endTime = time.toString();//更新报警结束时间
+					AlarmList[i].AlarmValue = netusage[x].toString();//更新当前实际值
+					//插入这条报警结束的alarm
+					crud.insert("devicealarm", AlarmList[i], function(){});
+				}else{//如果实际报警持续
+					AlarmList[i].AlarmValue = netusage[x].toString();//更新当前实际值
+					//将该报警监控项加入到数组alarmItem中去
+					alarmItem.push(alarmtype);
 				}
 			}else{//此条报警为“已经报警结束”状态
-				if(parseInt(source[alarmtype][x]) > source.ThresHold[alarmtype]){//此刻网络利用率过高，则加入一条新的报警信息
-					alarmForNetUsage(source, x, alarmtype);
-					flagD = true;
-					JudgeAlarmItem(source, alarmtype);
-				}else{
-					JudgeAlarmItemR(source, alarmtype);
+				if(parseInt(netusage[x]) > device.ThresHold[alarmtype]){//此刻CpuUsage值过高，则加入一条新的报警信息
+					//报警数组中插入一条新的报警
+					alarmForNetUsage(device, x, alarmtype, netusage, time);
+					//将该报警监控项加入到数组alarmItem中去
+					alarmItem.push(alarmtype);
 				}
 			}
 			break;
 		}
 	}
-	//报警列表中未存储这个设备的NetUsage报警
+	//flag = false:如果报警列表中不存在这个设备的该监控项的基本信息报警
 	if(flag == false){
-		if(parseInt(source[alarmtype][x]) > source.ThresHold[alarmtype]){//此刻NetUsage值过高，则加入一条新的报警信息
-			alarmForNetUsage(source, x, alarmtype);
-			flagD = true;
-			JudgeAlarmItem(source, alarmtype);
-		}else{
-			JudgeAlarmItemR(source, alarmtype);
+		if(parseInt(netusage[x]) > device.ThresHold[alarmtype]){
+			alarmForNetUsage(device, x, alarmtype, netusage, time);
+			//将该报警监控项加入到数组alarmItem中去
+			alarmItem.push(alarmtype);
 		}
 	}
-	return flagD;
 }
 
-//当符合报警门限时，判断设备数组AlarmItem项中是否包含该监控项
+//当符合报警门限时，判断设备数组AlarmItem项中是否包含该监控项，如果没有则插入
 function JudgeAlarmItem(device, alarmtype){
 	if(device.AlarmItem != undefined){
-		if(device.AlarmItem.length != 0){
-			if(device.AlarmItem.join().indexOf(alarmtype) == -1){
-				device.AlarmItem.push(alarmtype);
-			}
-		}
-	}else{
+		crud.insertIntoArr("device", {_id : new ObjectID(device._id)}, {AlarmItem:alarmtype}, function(){});
+	}else{//如果该设备中没有AlarmItem项，则插入
 		var alarmitem = new Array(alarmtype);
-		device.AlarmItem = alarmitem;
+		crud.insert("device", {_id : new ObjectID(device._id)}, {AlarmItem:alarmitem}, function(){});
 	}
 }
 
-//当不符合报警门限时，判断设备数组AlarmItem项中是否包含该监控项
+//当不符合报警门限时，判断设备数组AlarmItem项中是否包含该监控项，如果存在，则移除
 function JudgeAlarmItemR(device, alarmtype){
 	if(device.AlarmItem != undefined){
 		if(device.AlarmItem.length != 0){
 			for(var f=0; f < device.AlarmItem.length; f ++){
 				if(device.AlarmItem[f] == alarmtype){
-					device.AlarmItem.splice(f, 1);
+					crud.removeDeleteArrItem("device", {_id : new ObjectID(device._id)}, {AlarmItem:alarmtype}, function(){});
+					// device.AlarmItem.splice(f, 1);
 					break;
 				}
 			}
@@ -845,95 +636,87 @@ function AlarmJudgeNetStatus(ip, alarmtype, flag, flagD){
 }
 
 //对进程的报警判断,>时报警
-function AlarmJudgeModuleB(device, alarmtype, x, flag, flagD, flagAPP){//x是进程在设备列表该设备元素数组中的序号
+function AlarmJudgeModuleB(device, alarmtype, appstatus, x, flagAPP, time){//x是进程在设备列表该设备元素数组中的序号
+	var flag = false;
 	//遍历整个报警数组，从后往前，针对设备基本信息报警
 	for(var i=AlarmList.length-1; i != -1; i --){
-		var iscontain = checkStrInArray(AlarmList[i].Source[0], device.Ip);
-		if(iscontain && (AlarmList[i].Source[1] == alarmtype) && (AlarmList[i].Source[2] == device.AppModules[x].Name)){//报警列表中已存在
+		var iscontain = checkStrInArray(AlarmList[i].Ip[0], device.Ip);
+		if(iscontain && (AlarmList[i].AlarmType == alarmtype) && (AlarmList[i].AppName != undefined) && (AlarmList[i].AppName == device.AppModules[x].Name)){//报警列表中已存在
 			flag = true;
 			if(AlarmList[i].Status == "True"){//此条报警为“正在报警”状态
-				if(parseInt(device.AppModules[x][alarmtype]) < device.ThresHold.AppModules[x][alarmtype]){////此刻ThreadNumber恢复正常数值
+				if(parseInt(appstatus[x][alarmtype]) < device.ThresHold.AppModules[x][alarmtype]){//此刻报警结束
 					AlarmList[i].Status = "False";//让报警状态为不报警
-					AlarmList[i].endTime = device.Time.toString();//更新报警结束时间
-					JudgeAlarmItemR(device, alarmtype);
-				}else{
-					flagD = true;
-					JudgeAlarmItem(device, alarmtype);
+					AlarmList[i].endTime = time.toString();//更新报警结束时间
+					AlarmList[i].AlarmValue = appstatus[x][alarmtype].toString();//更新当前实际值
+					//插入这条报警结束的alarm
+					crud.insert("devicealarm", AlarmList[i], function(){});
+				}else{//还在报警，更新报警当前值
 					flagAPP = true;
+					AlarmList[i].AlarmValue = appstatus[x][alarmtype].toString();//更新当前实际值
 				}
-				AlarmList[i].Source[3] = device.AppModules[x][alarmtype].toString();//如果此刻CpuUsage过高，则只需要更新报警实时数值
 			}else{//此条报警为“已经报警结束”状态
-				if(parseInt(device.AppModules[x][alarmtype]) > device.ThresHold.AppModules[x][alarmtype]){//此刻CpuUsage值过高，则加入一条新的报警信息
-					alarmForModule(device, alarmtype, x);
-					flagD = true;
-					JudgeAlarmItem(device, alarmtype);
+				if(parseInt(appstatus[x][alarmtype]) > device.ThresHold.AppModules[x][alarmtype]){//此刻CpuUsage值过高，则加入一条新的报警信息
 					flagAPP = true;
-				}else{
-					JudgeAlarmItemR(device, alarmtype);
+					//报警数组中插入一条新的报警
+					alarmForModule(device, x, alarmtype, appstatus, time);
+					//将该报警监控项加入到数组alarmItem中去
+					alarmItem.push(alarmtype);
 				}
 			}
-			break;
 		}
+		break;
 	}
-	//报警列表中未存储这个设备的这个进程的例如ThreadNum报警
+	//flag = false:如果报警列表中不存在这个设备的该监控项的基本信息报警
 	if(flag == false){
-		if(parseInt(device.AppModules[x][alarmtype]) > device.ThresHold.AppModules[x][alarmtype]){//此刻ThreadNum值过高，则加入一条新的报警信息
-			alarmForModule(device, alarmtype, x);
-			flagD = true;
-			JudgeAlarmItem(device, alarmtype);
-			flagAPP = true;
-		}else{
-			JudgeAlarmItemR(device, alarmtype);
+		if(parseInt(appstatus[x][alarmtype]) > device.ThresHold.AppModules[x][alarmtype]){
+			alarmForModule(device, x, alarmtype, appstatus, time);
+			//将该报警监控项加入到数组alarmItem中去
+			alarmItem.push(alarmtype);
 		}
-	}
-	var Flag = new Array(flagD, flagAPP);
-	return Flag;
+	}	
+	return flagAPP;
 }
 
 //对进程的报警判断,<时报警
-function AlarmJudgeModuleL(device, alarmtype, x, flag, flagD, flagAPP){//x是进程在设备列表该设备元素数组中的序号
+function AlarmJudgeModuleL(device, alarmtype, appstatus, x, flagAPP, time){//x是进程在设备列表该设备元素数组中的序号
+	var flag = false;
 	//遍历整个报警数组，从后往前，针对设备基本信息报警
 	for(var i=AlarmList.length-1; i != -1; i --){
-		var iscontain = checkStrInArray(AlarmList[i].Source[0], device.Ip);
-		if(iscontain && (AlarmList[i].Source[1] == alarmtype) && (AlarmList[i].Source[2] == device.AppModules[x].Name)){//报警列表中已存在
+		var iscontain = checkStrInArray(AlarmList[i].Ip[0], device.Ip);
+		if(iscontain && (AlarmList[i].AlarmType == alarmtype) && (AlarmList[i].AppName != undefined) && (AlarmList[i].AppName == device.AppModules[x].Name)){//报警列表中已存在
 			flag = true;
 			if(AlarmList[i].Status == "True"){//此条报警为“正在报警”状态
-				if(parseInt(device.AppModules[x][alarmtype]) > device.ThresHold.AppModules[x][alarmtype]){////此刻CpuUsage恢复正常数值
+				if(parseInt(appstatus[x][alarmtype]) > device.ThresHold.AppModules[x][alarmtype]){//此刻报警结束
 					AlarmList[i].Status = "False";//让报警状态为不报警
-					AlarmList[i].endTime = device.Time.toString();//更新报警结束时间
-					JudgeAlarmItemR(device, alarmtype);
-				}else{
-					flagD = true;
-					JudgeAlarmItem(device, alarmtype);
+					AlarmList[i].endTime = time.toString();//更新报警结束时间
+					AlarmList[i].AlarmValue = appstatus[x][alarmtype].toString();//更新当前实际值
+					//插入这条报警结束的alarm
+					crud.insert("devicealarm", AlarmList[i], function(){});
+				}else{//还在报警，更新报警当前值
 					flagAPP = true;
+					AlarmList[i].AlarmValue = appstatus[x][alarmtype].toString();//更新当前实际值
 				}
-				AlarmList[i].Source[3] = device.AppModules[x][alarmtype].toString();//如果此刻CpuUsage过高，则只需要更新报警实时数值
 			}else{//此条报警为“已经报警结束”状态
-				if(parseInt(device.AppModules[x][alarmtype]) < device.ThresHold.AppModules[x][alarmtype]){//此刻CpuUsage值过高，则加入一条新的报警信息
-					alarmForModule(device, alarmtype, x);
-					flagD = true;
-					JudgeAlarmItem(device, alarmtype);
+				if(parseInt(appstatus[x][alarmtype]) < device.ThresHold.AppModules[x][alarmtype]){//此刻CpuUsage值过高，则加入一条新的报警信息
 					flagAPP = true;
-				}else{
-					JudgeAlarmItemR(device, alarmtype);
+					//报警数组中插入一条新的报警
+					alarmForModule(device, x, alarmtype, appstatus, time);
+					//将该报警监控项加入到数组alarmItem中去
+					alarmItem.push(alarmtype);
 				}
 			}
-			break;
 		}
+		break;
 	}
-	//报警列表中未存储这个设备的这个进程的例如ThreadNum报警
+	//flag = false:如果报警列表中不存在这个设备的该监控项的基本信息报警
 	if(flag == false){
-		if(parseInt(device.AppModules[x][alarmtype]) < device.ThresHold.AppModules[alarmtype]){//此刻ThreadNum值过高，则加入一条新的报警信息
-			alarmForModule(device, alarmtype, x);
-			flagD = true;
-			JudgeAlarmItem(device, alarmtype);
-			flagAPP = true;
-		}else{
-			JudgeAlarmItemR(device, alarmtype);
+		if(parseInt(appstatus[x][alarmtype]) < device.ThresHold.AppModules[x][alarmtype]){
+			alarmForModule(device, x, alarmtype, appstatus, time);
+			//将该报警监控项加入到数组alarmItem中去
+			alarmItem.push(alarmtype);
 		}
-	}
-	var Flag = new Array(flagD, flagAPP);
-	return Flag;
+	}	
+	return flagAPP;
 }
 
 //判断接收机的锁定状态，并存入AlarmList数组
@@ -1018,12 +801,7 @@ function alarmForSNMP(device, alarmtype, desc){
 }
 
 //为设备报警使用的，构造一条报警出来
-function alarmForDevice(device, alarmtype){
-	var SourceArr = new Array();
-	SourceArr.push(device.Ip.join('/')),
-	SourceArr.push(alarmtype);
-	SourceArr.push(device.DeviceStatus[alarmtype]);
-	var time = device.Time.toString();
+function alarmForDevice(device, alarmtype, devicestatus, time){
 	alarm = {
 		DeviceName:device.Name.toString(),
 		SubSys:device.SubSys.toString(),
@@ -1034,13 +812,16 @@ function alarmForDevice(device, alarmtype){
 		Box:device.DeviceInfo.Box,
 		BoxLocation:device.DeviceInfo.BoxLocation,
 		DeviceHeight:device.DeviceInfo.DeviceHeight,
-		Source:SourceArr
+		Ip:device.Ip,
+		AlarmType:alarmtype,
+		AlarmValue:devicestatus.alarmtype,
+		AlarmThreshold:device.ThresHold[alarmtype]
 	};
 	AlarmList.push(alarm);
 };
 
 //为进程报警使用的，构造一条报警出来
-function alarmForModule(device, alarmtype, x){
+function alarmForModule(device, x, alarmtype, appstatus, time){
 	var SourceArr = new Array();
 	SourceArr.push(device.Ip.join('/'));//Source中的IP，以空格隔开
 	SourceArr.push(alarmtype);//Source中的监控项
@@ -1053,13 +834,17 @@ function alarmForModule(device, alarmtype, x){
 		DeviceName:device.Name.toString(),
 		SubSys:device.SubSys.toString(),
 		DeviceType:device.DeviceInfo.DeviceType.toString(),
-		StartTime:device.Time.toString(),
+		StartTime:time.toString(),
 		Status:"True",
 		Room:device.DeviceInfo.Room,
 		Box:device.DeviceInfo.Box,
 		BoxLocation:device.DeviceInfo.BoxLocation,
 		DeviceHeight:device.DeviceInfo.DeviceHeight,
-		Source:SourceArr,
+		Ip:device.Ip,
+		AlarmType:alarmtype,
+		AppName:device.AppModules[x].Name.toString(),
+		AlarmValue:appstatus[x][alarmtype].toString(),
+		AlarmThreshold:device.ThresHold.AppModules[x][alarmtype].toString(),
 		Desc:Desc,
 		Solution:Solution
 	};
@@ -1092,22 +877,21 @@ function makeSolution(alarmtype){
 
 
 //为网络利用率报警使用的，构造一条报警出来
-function alarmForNetUsage(source, x, alarmtype){
-	var SourceArr = new Array();
-	SourceArr.push(source.Ip[x].toString()),
-	SourceArr.push(alarmtype);
-	SourceArr.push(source.NetUsage[x].toString());
+function alarmForNetUsage(device, x, alarmtype, netusage, time){
 	alarm = {
-		DeviceName:source.Name.toString(),
-		SubSys:source.SubSys.toString(),
-		DeviceType:source.DeviceInfo.DeviceType.toString(),
-		StartTime:source.Time.toString(),
+		DeviceName:device.Name.toString(),
+		SubSys:device.SubSys.toString(),
+		DeviceType:device.DeviceInfo.DeviceType.toString(),
+		StartTime:time,
 		Status:"True",
-		Room:source.DeviceInfo.Room,
-		Box:source.DeviceInfo.Box,
-		BoxLocation:source.DeviceInfo.BoxLocation,
-		DeviceHeight:source.DeviceInfo.DeviceHeight,
-		Source:SourceArr
+		Room:device.DeviceInfo.Room,
+		Box:device.DeviceInfo.Box,
+		BoxLocation:device.DeviceInfo.BoxLocation,
+		DeviceHeight:device.DeviceInfo.DeviceHeight,
+		Ip:device.Ip[x].toString(),
+		AlarmType:alarmtype,
+		AlarmValue:netusage[x],
+		AlarmThreshold:device.ThresHold[alarmtype]
 	};
 	AlarmList.push(alarm);
 };

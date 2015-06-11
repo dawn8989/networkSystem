@@ -21,7 +21,7 @@ exports.queryApp = function(req, res, next){
 	if(alarmstatus == "ON"){//这种情况，要传到json中的信息从报警数组AlarmList中获取
 		//根据软件报警项查询
 		for(var i=0; i < AlarmList.length; i ++){
-			if((AlarmList[i].Status == "True") &&(AlarmList[i].Source.length == 5)){
+			if((AlarmList[i].Status == "True") && (AlarmList[i].Source.length == 5)){
 				var Ip = new Array(AlarmList[i].Source[0]);
 				var tmp = {
 					device:{
@@ -82,24 +82,28 @@ exports.queryApp = function(req, res, next){
 		//根据软件报警项查询
 		if(alarmstatus == "OFF"){
 			for(var i = 0; i < DeviceList.length; i ++){
-				for(var j=0; j < DeviceList[i].AppModules.length; j ++){
-					if(DeviceList[i].AppModules[j].AlarmStatus == alarmstatus){
-						var tmp = {//这里重新构造一种数据形式，因为要有一个index来标示这个APP在设备中的顺序
-							device:DeviceList[i],
-							index:j
+				if(DeviceList[i].AppModules != undefined){
+					for(var j=0; j < DeviceList[i].AppModules.length; j ++){
+						if(DeviceList[i].AppModules[j].AlarmStatus == alarmstatus){
+							var tmp = {//这里重新构造一种数据形式，因为要有一个index来标示这个APP在设备中的顺序
+								device:DeviceList[i],
+								index:j
+							}
+							DeviceTmp1.push(tmp);
 						}
-						DeviceTmp1.push(tmp);
 					}
 				}
 			}
 		}else if(alarmstatus == ""){
 			for(var i = 0; i < DeviceList.length; i ++){
-				for(var j=0; j < DeviceList[i].AppModules.length; j ++){
-					var tmp = {
-						device:DeviceList[i],
-						index:j
+				if(DeviceList[i].AppModules != undefined){
+					for(var j=0; j < DeviceList[i].AppModules.length; j ++){
+						var tmp = {
+							device:DeviceList[i],
+							index:j
+						}
+						DeviceTmp1.push(tmp);
 					}
-					DeviceTmp1.push(tmp);
 				}
 			}
 		}

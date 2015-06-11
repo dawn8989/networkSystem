@@ -388,7 +388,7 @@ DeviceList = [
 	Name:'有源公分组_12',
 	SubSys:'有源公分组',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:12,//子系统中的顺序，从1开始，递增1
 	DeviceId:11,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['']//有几个IP就往数组里写几个，用逗号隔开，
@@ -423,7 +423,7 @@ DeviceList = [
 	Name:'有源公分组_13',
 	SubSys:'有源公分组',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:13,//子系统中的顺序，从1开始，递增1
 	DeviceId:12,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['']//有几个IP就往数组里写几个，用逗号隔开，
@@ -563,7 +563,7 @@ DeviceList = [
 	Name:'有源公分组_17',
 	SubSys:'有源公分组',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:17,//子系统中的顺序，从1开始，递增1
 	DeviceId:16,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['']//有几个IP就往数组里写几个，用逗号隔开，
@@ -878,7 +878,7 @@ DeviceList = [
 	Name:'有源公分组_26',
 	SubSys:'有源公分组',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:26,//子系统中的顺序，从1开始，递增1
 	DeviceId:25,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['']//有几个IP就往数组里写几个，用逗号隔开，
@@ -913,7 +913,7 @@ DeviceList = [
 	Name:'有源公分组_27',
 	SubSys:'有源公分组',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:27,//子系统中的顺序，从1开始，递增1
 	DeviceId:26,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['']//有几个IP就往数组里写几个，用逗号隔开，
@@ -948,7 +948,7 @@ DeviceList = [
 	Name:'有源公分组_28',
 	SubSys:'有源公分组',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:28,//子系统中的顺序，从1开始，递增1
 	DeviceId:27,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['']//有几个IP就往数组里写几个，用逗号隔开，
@@ -989,7 +989,7 @@ DeviceList = [
 	Name:'频谱监测子系统_1',
 	SubSys:'频谱监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:1,//子系统中的顺序，从1开始，递增1
 	DeviceId:28,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.130'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1133,7 +1133,7 @@ DeviceList = [
 	Name:'频谱监测子系统_5',
 	SubSys:'频谱监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:5,//子系统中的顺序，从1开始，递增1
 	DeviceId:32,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.135'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1169,7 +1169,7 @@ DeviceList = [
 	Name:'频谱监测子系统_6',
 	SubSys:'频谱监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:6,//子系统中的顺序，从1开始，递增1
 	DeviceId:33,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.136'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1205,7 +1205,7 @@ DeviceList = [
 	Name:'频谱监测子系统_7',
 	SubSys:'频谱监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:7,//子系统中的顺序，从1开始，递增1
 	DeviceId:34,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.138'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1241,7 +1241,7 @@ DeviceList = [
 	Name:'频谱监测子系统_8',
 	SubSys:'频谱监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:8,//子系统中的顺序，从1开始，递增1
 	DeviceId:35,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.140'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1640,7 +1640,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 
@@ -1688,7 +1688,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -1735,7 +1735,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -1744,7 +1744,7 @@ DeviceList = [
 	Name:'频谱监测子系统_21',
 	SubSys:'频谱监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:21,//子系统中的顺序，从1开始，递增1
 	DeviceId:48,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['10.15.127.140'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1780,7 +1780,7 @@ DeviceList = [
 	Name:'信道监测子系统_1',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:1,//子系统中的顺序，从1开始，递增1
 	DeviceId:49,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.2'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1816,7 +1816,7 @@ DeviceList = [
 	Name:'信道监测子系统_2',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:2,//子系统中的顺序，从1开始，递增1
 	DeviceId:50,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.3'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1852,7 +1852,7 @@ DeviceList = [
 	Name:'信道监测子系统_3',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:3,//子系统中的顺序，从1开始，递增1
 	DeviceId:51,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.4'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -1888,7 +1888,7 @@ DeviceList = [
 	Name:'信道监测子系统_4',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	AlarmItem:['NetStatus'],
 	Id:4,//子系统中的顺序，从1开始，递增1
 	DeviceId:52,//设备ID,标志在数组中的顺序，从0开始，递增1
@@ -1925,7 +1925,7 @@ DeviceList = [
 	Name:'信道监测子系统_5',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	AlarmItem:['NetStatus'],
 	Id:5,//子系统中的顺序，从1开始，递增1
 	DeviceId:53,//设备ID,标志在数组中的顺序，从0开始，递增1
@@ -2178,7 +2178,7 @@ DeviceList = [
 	Name:'信道监测子系统_12',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:12,//子系统中的顺序，从1开始，递增1
 	DeviceId:60,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.19'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2214,7 +2214,7 @@ DeviceList = [
 	Name:'信道监测子系统_13',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:13,//子系统中的顺序，从1开始，递增1
 	DeviceId:61,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.20'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2250,7 +2250,7 @@ DeviceList = [
 	Name:'信道监测子系统_14',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:14,//子系统中的顺序，从1开始，递增1
 	DeviceId:62,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.21'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2286,7 +2286,7 @@ DeviceList = [
 	Name:'信道监测子系统_15',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:15,//子系统中的顺序，从1开始，递增1
 	DeviceId:63,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.22'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2322,7 +2322,7 @@ DeviceList = [
 	Name:'信道监测子系统_16',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:1,//子系统中的顺序，从1开始，递增1
 	DeviceId:64,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.26'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2538,7 +2538,7 @@ DeviceList = [
 	Name:'信道监测子系统_22',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:22,//子系统中的顺序，从1开始，递增1
 	DeviceId:70,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.35'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2574,7 +2574,7 @@ DeviceList = [
 	Name:'信道监测子系统_23',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:23,//子系统中的顺序，从1开始，递增1
 	DeviceId:71,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.36'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2610,7 +2610,7 @@ DeviceList = [
 	Name:'信道监测子系统_24',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:24,//子系统中的顺序，从1开始，递增1
 	DeviceId:72,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.37'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2646,7 +2646,7 @@ DeviceList = [
 	Name:'信道监测子系统_25',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:25,//子系统中的顺序，从1开始，递增1
 	DeviceId:73,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.38'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2682,7 +2682,7 @@ DeviceList = [
 	Name:'信道监测子系统_26',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:26,//子系统中的顺序，从1开始，递增1
 	DeviceId:74,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.42'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2718,7 +2718,7 @@ DeviceList = [
 	Name:'信道监测子系统_27',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:27,//子系统中的顺序，从1开始，递增1
 	DeviceId:75,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.43'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2862,7 +2862,7 @@ DeviceList = [
 	Name:'信道监测子系统_31',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:31,//子系统中的顺序，从1开始，递增1
 	DeviceId:79,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.50'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2898,7 +2898,7 @@ DeviceList = [
 	Name:'信道监测子系统_32',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:32,//子系统中的顺序，从1开始，递增1
 	DeviceId:80,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.51'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -2934,7 +2934,7 @@ DeviceList = [
 	Name:'信道监测子系统_33',
 	SubSys:'信道监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:33,//子系统中的顺序，从1开始，递增1
 	DeviceId:81,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.15.52'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -3441,7 +3441,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3489,7 +3489,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3537,7 +3537,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3586,7 +3586,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3634,7 +3634,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -3681,7 +3681,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3729,7 +3729,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3777,7 +3777,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3825,7 +3825,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3873,7 +3873,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3921,7 +3921,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -3969,7 +3969,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4017,7 +4017,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4026,7 +4026,7 @@ DeviceList = [
 	Name:'音视频监测子系统_11',
 	SubSys:'音视频监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:11,//子系统中的顺序，从1开始，递增1
 	DeviceId:107,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.16.18'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -4065,7 +4065,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4074,7 +4074,7 @@ DeviceList = [
 	Name:'音视频监测子系统_12',
 	SubSys:'音视频监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:12,//子系统中的顺序，从1开始，递增1
 	DeviceId:108,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.16.10'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -4113,7 +4113,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4122,7 +4122,7 @@ DeviceList = [
 	Name:'音视频监测子系统_13',
 	SubSys:'音视频监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:13,//子系统中的顺序，从1开始，递增1
 	DeviceId:109,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.16.22'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -4161,7 +4161,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4209,7 +4209,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4257,7 +4257,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4305,7 +4305,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4353,7 +4353,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4401,7 +4401,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4449,7 +4449,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -4458,7 +4458,7 @@ DeviceList = [
 	Name:'音视频监测子系统_20',
 	SubSys:'音视频监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:20,//子系统中的顺序，从1开始，递增1
 	DeviceId:116,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['172.17.16.46']//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -4494,7 +4494,7 @@ DeviceList = [
 	Name:'音视频监测子系统_21',
 	SubSys:'音视频监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:21,//子系统中的顺序，从1开始，递增1
 	DeviceId:117,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['172.17.16.46']//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -4530,7 +4530,7 @@ DeviceList = [
 	Name:'音视频监测子系统_22',
 	SubSys:'音视频监测子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:22,//子系统中的顺序，从1开始，递增1
 	DeviceId:118,//设备ID,标志在数组中的顺序，从0开始，递增1
 	//Ip:['172.17.16.46']//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -4569,7 +4569,7 @@ DeviceList = [
 	Name:'解调子系统_1',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:1,//子系统中的顺序，从1开始，递增1
 	DeviceId:119,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.2','172.17.12.2'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -4929,7 +4929,7 @@ DeviceList = [
 	Name:'解调子系统_11',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:11,//子系统中的顺序，从1开始，递增1
 	DeviceId:129,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.12.46'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -4965,7 +4965,7 @@ DeviceList = [
 	Name:'解调子系统_12',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:12,//子系统中的顺序，从1开始，递增1
 	DeviceId:130,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.12.58'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -5217,7 +5217,7 @@ DeviceList = [
 	Name:'解调子系统_19',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:19,//子系统中的顺序，从1开始，递增1
 	DeviceId:137,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.21','172.17.12.86'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -5253,7 +5253,7 @@ DeviceList = [
 	Name:'解调子系统_20',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:20,//子系统中的顺序，从1开始，递增1
 	DeviceId:138,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.22','172.17.12.90'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -5289,7 +5289,7 @@ DeviceList = [
 	Name:'解调子系统_21',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:21,//子系统中的顺序，从1开始，递增1
 	DeviceId:139,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.23','172.17.12.94'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -5325,7 +5325,7 @@ DeviceList = [
 	Name:'解调子系统_22',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:22,//子系统中的顺序，从1开始，递增1
 	DeviceId:140,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.12.98'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -5901,7 +5901,7 @@ DeviceList = [
 	Name:'解调子系统_38',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:38,//子系统中的顺序，从1开始，递增1
 	DeviceId:156,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.13.38'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -5937,7 +5937,7 @@ DeviceList = [
 	Name:'解调子系统_39',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:39,//子系统中的顺序，从1开始，递增1
 	DeviceId:157,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.41','172.17.13.50'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -5973,7 +5973,7 @@ DeviceList = [
 	Name:'解调子系统_40',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:40,//子系统中的顺序，从1开始，递增1
 	DeviceId:158,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.42','172.17.13.54'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -6009,7 +6009,7 @@ DeviceList = [
 	Name:'解调子系统_41',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:41,//子系统中的顺序，从1开始，递增1
 	DeviceId:159,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.43','172.17.13.58'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -6045,7 +6045,7 @@ DeviceList = [
 	Name:'解调子系统_42',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:42,//子系统中的顺序，从1开始，递增1
 	DeviceId:160,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.44','172.17.13.62'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -6081,7 +6081,7 @@ DeviceList = [
 	Name:'解调子系统_43',
 	SubSys:'解调子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:43,//子系统中的顺序，从1开始，递增1
 	DeviceId:161,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.31.45','172.17.13.66'],//有几个IP就往数组里写几个，用逗号隔开，没有ip地址删除
@@ -8434,7 +8434,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -8483,7 +8483,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -8531,7 +8531,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -8579,7 +8579,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -8627,7 +8627,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 	
@@ -8686,7 +8686,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -8782,7 +8782,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -8839,7 +8839,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -8896,7 +8896,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -8953,7 +8953,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9017,7 +9017,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9027,7 +9027,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9091,7 +9091,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9101,7 +9101,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9165,7 +9165,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9175,7 +9175,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9239,7 +9239,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9249,7 +9249,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9313,7 +9313,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9323,7 +9323,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9386,7 +9386,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9396,7 +9396,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9459,7 +9459,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9469,7 +9469,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9532,7 +9532,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9542,7 +9542,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9605,7 +9605,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9615,7 +9615,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9678,7 +9678,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9688,7 +9688,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9751,7 +9751,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9761,7 +9761,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9824,7 +9824,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9834,7 +9834,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9897,7 +9897,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9907,7 +9907,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -9970,7 +9970,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -9980,7 +9980,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10043,7 +10043,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10053,7 +10053,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10116,7 +10116,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10126,7 +10126,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10189,7 +10189,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10199,7 +10199,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10262,7 +10262,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10272,7 +10272,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10335,7 +10335,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10345,7 +10345,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10408,7 +10408,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10418,7 +10418,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10481,7 +10481,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10491,7 +10491,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10554,7 +10554,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10564,7 +10564,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10627,7 +10627,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10637,7 +10637,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10700,7 +10700,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10710,7 +10710,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10773,7 +10773,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10783,7 +10783,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10846,7 +10846,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10856,7 +10856,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10919,7 +10919,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -10929,7 +10929,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -10992,7 +10992,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11002,7 +11002,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11065,7 +11065,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11075,7 +11075,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11138,7 +11138,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11148,7 +11148,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11211,7 +11211,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11221,7 +11221,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11284,7 +11284,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11294,7 +11294,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11357,7 +11357,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11367,7 +11367,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11430,7 +11430,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11440,7 +11440,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11503,7 +11503,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11513,7 +11513,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11576,7 +11576,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11586,7 +11586,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11651,7 +11651,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11661,7 +11661,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11724,7 +11724,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11734,7 +11734,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11797,7 +11797,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11807,7 +11807,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11871,7 +11871,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11881,7 +11881,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -11890,7 +11890,7 @@ DeviceList = [
 	Name:'采集转码子系统_41',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:41,//子系统中的顺序，从1开始，递增1
 	DeviceId:276,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.6'],//有几个IP就往数组里写几个，用逗号隔开
@@ -11944,7 +11944,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -11954,7 +11954,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12017,7 +12017,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12027,7 +12027,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12036,7 +12036,7 @@ DeviceList = [
 	Name:'采集转码子系统_43',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:43,//子系统中的顺序，从1开始，递增1
 	DeviceId:278,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.8'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12090,7 +12090,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12100,7 +12100,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12109,7 +12109,7 @@ DeviceList = [
 	Name:'采集转码子系统_44',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:44,//子系统中的顺序，从1开始，递增1
 	DeviceId:279,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.9'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12163,7 +12163,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12173,7 +12173,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12182,7 +12182,7 @@ DeviceList = [
 	Name:'采集转码子系统_45',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:45,//子系统中的顺序，从1开始，递增1
 	DeviceId:280,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.10'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12236,7 +12236,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12246,7 +12246,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12255,7 +12255,7 @@ DeviceList = [
 	Name:'采集转码子系统_46',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:46,//子系统中的顺序，从1开始，递增1
 	DeviceId:281,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.11'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12309,7 +12309,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12319,7 +12319,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12328,7 +12328,7 @@ DeviceList = [
 	Name:'采集转码子系统_47',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:47,//子系统中的顺序，从1开始，递增1
 	DeviceId:282,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.12'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12382,7 +12382,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12392,7 +12392,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12401,7 +12401,7 @@ DeviceList = [
 	Name:'采集转码子系统_48',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:48,//子系统中的顺序，从1开始，递增1
 	DeviceId:283,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.13'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12455,7 +12455,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12465,7 +12465,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12474,7 +12474,7 @@ DeviceList = [
 	Name:'采集转码子系统_49',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:49,//子系统中的顺序，从1开始，递增1
 	DeviceId:284,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.34'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12528,7 +12528,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12538,7 +12538,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12547,7 +12547,7 @@ DeviceList = [
 	Name:'采集转码子系统_50',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:50,//子系统中的顺序，从1开始，递增1
 	DeviceId:285,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.35'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12601,7 +12601,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12611,7 +12611,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12620,7 +12620,7 @@ DeviceList = [
 	Name:'采集转码子系统_51',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:51,//子系统中的顺序，从1开始，递增1
 	DeviceId:286,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.36'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12674,7 +12674,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12684,7 +12684,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12693,7 +12693,7 @@ DeviceList = [
 	Name:'采集转码子系统_52',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:52,//子系统中的顺序，从1开始，递增1
 	DeviceId:287,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.37'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12747,7 +12747,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12757,7 +12757,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12766,7 +12766,7 @@ DeviceList = [
 	Name:'采集转码子系统_53',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:53,//子系统中的顺序，从1开始，递增1
 	DeviceId:288,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.38'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12820,7 +12820,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12830,7 +12830,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12839,7 +12839,7 @@ DeviceList = [
 	Name:'采集转码子系统_54',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:54,//子系统中的顺序，从1开始，递增1
 	DeviceId:289,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.39'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12893,7 +12893,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12903,7 +12903,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12912,7 +12912,7 @@ DeviceList = [
 	Name:'采集转码子系统_55',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:55,//子系统中的顺序，从1开始，递增1
 	DeviceId:290,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.40'],//有几个IP就往数组里写几个，用逗号隔开
@@ -12966,7 +12966,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -12976,7 +12976,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -12985,7 +12985,7 @@ DeviceList = [
 	Name:'采集转码子系统_56',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:56,//子系统中的顺序，从1开始，递增1
 	DeviceId:291,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.41'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13039,7 +13039,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13049,7 +13049,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13058,7 +13058,7 @@ DeviceList = [
 	Name:'采集转码子系统_57',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:57,//子系统中的顺序，从1开始，递增1
 	DeviceId:292,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.42'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13112,7 +13112,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13122,7 +13122,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13131,7 +13131,7 @@ DeviceList = [
 	Name:'采集转码子系统_58',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:58,//子系统中的顺序，从1开始，递增1
 	DeviceId:293,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.43'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13185,7 +13185,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13195,7 +13195,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13204,7 +13204,7 @@ DeviceList = [
 	Name:'采集转码子系统_59',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:59,//子系统中的顺序，从1开始，递增1
 	DeviceId:294,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.44'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13258,7 +13258,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13268,7 +13268,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13277,7 +13277,7 @@ DeviceList = [
 	Name:'采集转码子系统_60',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:60,//子系统中的顺序，从1开始，递增1
 	DeviceId:295,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.45'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13331,7 +13331,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13341,7 +13341,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13350,7 +13350,7 @@ DeviceList = [
 	Name:'采集转码子系统_61',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:61,//子系统中的顺序，从1开始，递增1
 	DeviceId:296,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.66'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13404,7 +13404,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13414,7 +13414,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13423,7 +13423,7 @@ DeviceList = [
 	Name:'采集转码子系统_62',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:62,//子系统中的顺序，从1开始，递增1
 	DeviceId:297,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.67'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13477,7 +13477,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13487,7 +13487,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13496,7 +13496,7 @@ DeviceList = [
 	Name:'采集转码子系统_63',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:63,//子系统中的顺序，从1开始，递增1
 	DeviceId:298,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.68'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13550,7 +13550,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13560,7 +13560,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13569,7 +13569,7 @@ DeviceList = [
 	Name:'采集转码子系统_64',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:64,//子系统中的顺序，从1开始，递增1
 	DeviceId:299,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.69'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13623,7 +13623,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13633,7 +13633,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13642,7 +13642,7 @@ DeviceList = [
 	Name:'采集转码子系统_65',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:65,//子系统中的顺序，从1开始，递增1
 	DeviceId:300,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.70'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13696,7 +13696,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13706,7 +13706,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13715,7 +13715,7 @@ DeviceList = [
 	Name:'采集转码子系统_66',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:66,//子系统中的顺序，从1开始，递增1
 	DeviceId:301,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.71'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13769,7 +13769,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13779,7 +13779,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13788,7 +13788,7 @@ DeviceList = [
 	Name:'采集转码子系统_67',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:67,//子系统中的顺序，从1开始，递增1
 	DeviceId:302,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.72'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13842,7 +13842,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13852,7 +13852,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13861,7 +13861,7 @@ DeviceList = [
 	Name:'采集转码子系统_68',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:68,//子系统中的顺序，从1开始，递增1
 	DeviceId:303,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.73'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13915,7 +13915,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13925,7 +13925,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -13934,7 +13934,7 @@ DeviceList = [
 	Name:'采集转码子系统_69',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:69,//子系统中的顺序，从1开始，递增1
 	DeviceId:304,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.74'],//有几个IP就往数组里写几个，用逗号隔开
@@ -13988,7 +13988,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -13998,7 +13998,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14007,7 +14007,7 @@ DeviceList = [
 	Name:'采集转码子系统_70',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:70,//子系统中的顺序，从1开始，递增1
 	DeviceId:305,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.75'],//有几个IP就往数组里写几个，用逗号隔开
@@ -14061,7 +14061,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14071,7 +14071,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14080,7 +14080,7 @@ DeviceList = [
 	Name:'采集转码子系统_71',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:71,//子系统中的顺序，从1开始，递增1
 	DeviceId:306,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.76'],//有几个IP就往数组里写几个，用逗号隔开
@@ -14134,7 +14134,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14144,7 +14144,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14153,7 +14153,7 @@ DeviceList = [
 	Name:'采集转码子系统_72',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:72,//子系统中的顺序，从1开始，递增1
 	DeviceId:307,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.77'],//有几个IP就往数组里写几个，用逗号隔开
@@ -14207,7 +14207,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14217,7 +14217,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14226,7 +14226,7 @@ DeviceList = [
 	Name:'采集转码子系统_73',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:73,//子系统中的顺序，从1开始，递增1
 	DeviceId:308,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.98'],//有几个IP就往数组里写几个，用逗号隔开
@@ -14280,7 +14280,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14290,7 +14290,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14299,7 +14299,7 @@ DeviceList = [
 	Name:'采集转码子系统_74',
 	SubSys:'采集转码子系统',
 	Time:'2015-05-22 00:00:00',
-	AlarmStatus:'ON',
+	AlarmStatus:'OFF',
 	Id:74,//子系统中的顺序，从1开始，递增1
 	DeviceId:309,//设备ID,标志在数组中的顺序，从0开始，递增1
 	Ip:['172.17.120.99'],//有几个IP就往数组里写几个，用逗号隔开
@@ -14353,7 +14353,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14363,7 +14363,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14426,7 +14426,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14436,7 +14436,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14499,7 +14499,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14509,7 +14509,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14572,7 +14572,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14582,7 +14582,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14645,7 +14645,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14655,7 +14655,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14718,7 +14718,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14728,7 +14728,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14791,7 +14791,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14801,7 +14801,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14864,7 +14864,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14874,7 +14874,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -14937,7 +14937,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -14947,7 +14947,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15010,7 +15010,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		},
 		{
 			Name:'MoveFileManager.exe',
@@ -15020,7 +15020,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15151,7 +15151,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15208,7 +15208,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15265,7 +15265,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15322,7 +15322,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15379,7 +15379,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15436,7 +15436,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15493,7 +15493,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15550,7 +15550,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15607,7 +15607,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15664,7 +15664,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15721,7 +15721,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15778,7 +15778,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15835,7 +15835,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15892,7 +15892,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -15950,7 +15950,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -16007,7 +16007,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },
@@ -16064,7 +16064,7 @@ DeviceList = [
 			IOWrite:'100',
 			IOReadByte:'20675',
 			IOWriteByte:'42233',
-			AlarmStatus:'ON'
+			AlarmStatus:'OFF'
 		}
 	]
 },

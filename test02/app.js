@@ -20,7 +20,6 @@ var FileAlarmQuery = require('./routes/FileAlarmQuery');
 var DiskCheckManagement = require('./routes/DiskCheckManagement');
 var DiskAlarmQuery = require('./routes/DiskAlarmQuery');
 var DeviceInfoQuery = require('./routes/DeviceInfoQuery');
-var AlarmSwitch = require('./routes/AlarmSwitch');
 var Telephone = require('./routes/Telephone');
 var device = require('./routes/device');
 var devicenew = require('./routes/devicenew');
@@ -28,9 +27,27 @@ var devicetest = require('./routes/device_test');
 var filecheck = require('./routes/filecheck');
 var filecheck_bak = require('./routes/filecheck_bak');
 var diskcheck = require('./routes/diskcheck');
+var AlarmSwitch = require('./routes/AlarmSwitch');
 var users = require('./routes/users');
 var test = require('./routes/test');
 var libxmljs = require('libxmljs');
+//以下是mongodb数据库用到的
+var Col = require('./mongodb/Col');
+var Crud = require('./mongodb/Crud');
+var DeviceList = require('./modules/DeviceList');
+/* 
+数据库中查询的id要通过 new ObjectId(id) 进行实例化以后的id, 你单单传一个字符串id是一点用都没有的
+*/
+var ObjectID = require('mongodb').ObjectID;
+
+//初始化crud
+var crud;
+//新建db并获取
+var db = new Col("NetMonitor", function(db){
+  //数据库连接完毕...
+    //创建一个RESTFUL对象;
+    crud = new Crud(db, function(){});
+});
 
 var SubSystemList = require('./modules/SubSystemList');
 
@@ -78,11 +95,8 @@ app.get('/DeviceAlarmQuery', DeviceAlarmQuery.index);
 app.post('/queryDeviceAlarm', DeviceAlarmQuery.queryDeviceAlarm);
 app.get('/FileCheckManagement', FileCheckManagement.index);
 app.post('/queryFileTask', FileCheckManagement.queryFileTask);
-
 app.get('/FileCheckResult', FileCheckResult.index);
 //app.post('/queryFileTask', FileCheckManagement.queryFileTask);
-
-
 app.get('/FileCheckAdd', FileCheckAdd.index);
 app.post('/addContent', FileCheckAdd.addContent);
 app.post('/initContentTable', FileCheckAdd.initContentTable);
@@ -97,7 +111,6 @@ app.post('/queryDiskAlarm', DiskAlarmQuery.queryDiskAlarm);
 
 app.get('/DeviceInfoQuery', DeviceInfoQuery.index);
 app.post('/queryDeviceStatus', DeviceInfoQuery.queryDeviceStatus);
-
 app.get('/AlarmSwitch', AlarmSwitch.index);
 //app.post('/queryTelephone', Telephone.queryTelephone);
 //app.post('/addTelephone', Telephone.addTelephone);
@@ -180,5 +193,11 @@ app.use(function(err, req, res, next) {
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' +
     app.get('port') + '; press Ctrl-C to terminate.');
+  setInterval(function(){
+    crud.find("device", {}, function(docs){
+      DeviceList = docs;
+      // console.log(DeviceList);
+    });
+  }, 30*1000);
 });
 module.exports = app;

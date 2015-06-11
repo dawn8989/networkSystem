@@ -9,9 +9,17 @@ AlarmList = [
 		Box:23,
 		BoxLocation:33,
 		DeviceHeight:4,
-		Source:['172.17.115.2', 'ThreadNum', 'MediaConvert.exe', "100", "80"],//把门限值也写进去,80是门限值,100是实测值
+		// Source:['172.17.115.2', 'ThreadNum', 'MediaConvert.exe', "100", "80"],//把门限值也写进去,80是门限值,100是实测值
+		Ip:"192.168.35.106",//device.Ip[0]
+		AlarmType:"ThreadNum",
+		AppName:"MediaConvert.exe",
+		AlarmValue:"80",
+		AlarmThreshold:"100",
 		Desc:'线程数过高',//只对软件报警的情况出现
 		Solution:'检查机器性能'//只对软件报警的情况出现
+		
+			
+		
 	}
 ]
 
