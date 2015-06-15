@@ -118,6 +118,8 @@ app.get('/AlarmSwitch', AlarmSwitch.index);
 app.get('/Telephone', Telephone.index);
 app.post('/queryTelephone', Telephone.queryTelephone);
 app.post('/addTelephone', Telephone.addTelephone);
+app.post('/deleteTelephone', Telephone.deleteTelephone);
+app.post('/editTelephone', Telephone.editTelephone);
 
 app.get('/test:name', test.index);
 app.post('/xml', devicenew.saveDevice);

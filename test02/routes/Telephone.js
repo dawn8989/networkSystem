@@ -1,7 +1,18 @@
 var express = require('express');
 var router  = express.Router();
 var TelephoneList = require('../modules/TelephoneList');
+var Col = require('../mongodb/Col');
+var Crud = require('../mongodb/Crud');
+var ObjectID = require('mongodb').ObjectID;
 
+//初始化crud
+var crud;
+//新建db并获取
+var db = new Col("NetMonitor", function(db){
+	//数据库连接完毕...
+    //创建一个RESTFUL对象;
+    crud = new Crud(db, function(){});
+});
 exports.index = function(req, res, next){
 	res.render('Telephone');
 };
@@ -12,31 +23,35 @@ exports.index = function(req, res, next){
 // }
 
 exports.addTelephone = function(req, res, next){
-	var data = req.body;
-	//添加的设备是否存在去另外一个函数判断，通过IP地址判断
-	var telephone = {
-		Provider:data.provider,
-		Telephone:data.telephone
-	}
-	TelephoneList.push(telephone);
-	// res.render('SubTopology');
+	
+	var data=req.body;	
+	console.log(data);
+	if(data.provider!=""&&data.telephone!="")
+		crud.insert("telephone",data);
 	res.redirect(303, '/Telephone');
 }
 
-exports.queryTelephone = function(req, res, next){
+exports.queryTelephone = function(req, res, next){	
+	var data = req.body;	
+	var q={};
+	if(data.provider != "")
+		q.provider={$regex:eval("/"+data.provider+"/")};
+	if(data.telephone !="")
+		q.telephone={$regex:eval("/"+data.telephone+"/")};
+	crud.find("telephone",q, function(docs){			
+		res.json(docs);
+	});	
+}
+
+exports.deleteTelephone = function(req, res, next){	
+	var data = req.body;	
+	crud.remove("telephone",{_id:new ObjectID(data._id)});		
+	res.redirect(303, '/Telephone');
+}
+
+exports.editTelephone = function(req, res, next){	
 	var data = req.body;
-	var provider = data.provider;
-	var DeviceTmp1 = new Array();
-	if(provider != ""){
-		for(var i=0; i < TelephoneList.length; i ++){
-			if(TelephoneList[i].Provider.indexOf(provider) != -1){
-				DeviceTmp1.push(TelephoneList[i]);
-			}else{
-				break;
-			}
-		}
-	}else{
-		DeviceTmp1 = TelephoneList;
-	}
-	res.json(DeviceTmp1);
+	console.log(data);
+	crud.update("telephone",{_id:new ObjectID(data._id)},{provider:data.provider,telephone:data.telephone});		
+	res.redirect(303, '/Telephone');
 }

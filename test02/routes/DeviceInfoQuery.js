@@ -34,7 +34,7 @@ exports.queryDeviceStatus = function(req, res, next){
 	var DeviceTmp1 = new Array();
 	if(deviceIP != ""){
 	    crud.find("device",{Ip:deviceIP}, function(docs) {
-	        DeviceTmp1 = docs;
+	        DeviceTmp1 = docs;			
 	        afterQuery(DeviceTmp1, subsys, devicetype, devicename, res);
 	    });
 	}else{
